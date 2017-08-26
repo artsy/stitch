@@ -34,7 +34,7 @@ Usage
 - [Express.js](#expressjs-and-pug)
 - [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
 - [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
-- [Precompiled templates](#precompiling-templates)
+- [Precompiling templates](#precompiling-templates)
 - [Preact and other custom renderers](#custom-renderers)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
@@ -467,7 +467,27 @@ const html = await renderLayout({
     body: App
   }
 })
+```
 
+Additionally, if you would like to override any default template engines (e.g., what is returned by `require('handlebars')`) you can do so by updating `config.engines`:
+
+```js
+const html = await renderLayout({
+  layout: 'templates/loginLayout.pug',
+  config: {
+    engines: {
+      handlebars: (filePath, locals) => {
+        return customHandlebarsRenderer(filePath, locals)
+      },
+      pug: (filePath, locals) => {
+        return customPugRenderer(filePath, locals)
+      }
+    }
+  },
+  blocks: {
+    body: App
+  }
+})
 ```
 
 Full API
@@ -530,15 +550,28 @@ const html = await renderLayout({
    */
   templates: {},
 
-  /**
-   * Configuration for layout renderer. Right now components are rendered via
-   * React, but any kind of engine can be passed in and accommodated assuming it
-   * returns a string of rendered markup.
-   *
-   * @type {Object}
-   */
   config: {
-    componentRenderer: ReactDOM.renderToString
+
+    /**
+     * Configuration for layout renderer. Right now components are rendered via
+     * ReactDOM, but any kind of engine can be passed in and accommodated
+     * assuming it returns a string of rendered markup.
+     *
+     * @type {Object}
+     */
+    componentRenderer: ReactDOM.renderToString,
+
+    /**
+     * If you would like to override any default template engines pass in a
+     * key matching the extension and a function, e.g.,
+     *
+     * engines: {
+     *   pug: (filePath, locals) => string
+     * }
+     *
+     * @type {Object}
+     */
+    engines: {}
   }
 })
 

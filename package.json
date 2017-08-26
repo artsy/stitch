@@ -50,6 +50,7 @@
     "handlebars": "^4.0.10",
     "jade": "^1.11.0",
     "jest": "^20.0.4",
-    "pug": "^2.0.0-rc.3"
+    "pug": "^2.0.0-rc.3",
+    "styled-components": "^2.1.2"
   }
 }
