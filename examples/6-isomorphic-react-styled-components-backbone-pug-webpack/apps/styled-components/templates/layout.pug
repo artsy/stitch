@@ -1,0 +1,15 @@
+extends ../../../templates/mainLayout 
+
+block head
+  != head
+  != css
+
+block body 
+  script.
+    var __BOOTSTRAP__ = !{JSON.stringify(data)}
+
+  #react-root
+    != body
+  
+  script(src='/static/styled_components.js')  
+  

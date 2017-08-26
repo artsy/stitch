@@ -34,8 +34,9 @@ Usage
 - [Express.js](#expressjs-and-pug)
 - [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
 - [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
-- [Precompiled templates](#precompiling-templates)
+- [Precompiling templates](#precompiling-templates)
 - [Preact and other custom renderers](#custom-renderers)
+- [`<StyledComponents />` support](#styled-components-support)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
 
@@ -467,7 +468,70 @@ const html = await renderLayout({
     body: App
   }
 })
+```
 
+Additionally, if you would like to override any default template engines (e.g., what is returned by `require('handlebars')`) you can do so by updating `config.engines`:
+
+```js
+const html = await renderLayout({
+  layout: 'templates/loginLayout.pug',
+  config: {
+    engines: {
+      handlebars: (filePath, locals) => {
+        return customHandlebarsRenderer(filePath, locals)
+      },
+      pug: (filePath, locals) => {
+        return customPugRenderer(filePath, locals)
+      }
+    }
+  },
+  blocks: {
+    body: App
+  }
+})
+```
+
+#### Styled Components Support  
+
+If your React app uses [`styled-components`](https://www.styled-components.com/), ensure you've installed [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components) and enable server-side rendering via config:
+
+```js
+import styled from 'styled-components'
+
+const html = await renderLayout({
+  layout: 'templates/layout.pug',
+  config: {
+    styledComponents: true
+  },
+  blocks: {
+    body: (props) => {
+      const Layout = styled.div`
+        background: purple;
+        border: 1px solid black;
+        color: white;
+        width: 100%;
+      `
+
+      return (
+        <Layout>
+          Hello Styled Components!
+        </Layout>
+      )
+    }
+  }
+})
+```
+
+Lastly, make sure to mount your styles in your layout template:
+
+```pug
+html
+  head
+    != css
+
+  body
+    #react-root
+      != body
 ```
 
 Full API
@@ -530,15 +594,39 @@ const html = await renderLayout({
    */
   templates: {},
 
-  /**
-   * Configuration for layout renderer. Right now components are rendered via
-   * React, but any kind of engine can be passed in and accommodated assuming it
-   * returns a string of rendered markup.
-   *
-   * @type {Object}
-   */
   config: {
-    componentRenderer: ReactDOM.renderToString
+
+    /**
+     * Configuration for layout renderer. Right now components are rendered via
+     * ReactDOM, but any kind of engine can be passed in and accommodated
+     * assuming it returns a string of rendered markup.
+     *
+     * @type {Object}
+     */
+    componentRenderer: ReactDOM.renderToString,
+
+    /**
+     * If you would like to override any default template engines pass in a
+     * key matching the extension and a function, e.g.,
+     *
+     * engines: {
+     *   pug: (filePath, locals) => string
+     * }
+     *
+     * @type {Object}
+     */
+    engines: {},
+
+    /**
+     * If your project uses <StyledComponents /> and you would like to extract
+     * styles from your component during server-side renders, set this to true.
+     *
+     * See https://www.styled-components.com/docs/advanced#server-side-rendering
+     * for more information.
+     *
+     * @type {Boolean}
+     */
+    styledComponents: false
   }
 })
 
