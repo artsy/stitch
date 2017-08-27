@@ -8,7 +8,7 @@
     "start": "NODE_ENV=development node index.js"
   },
   "dependencies": {
-    "@artsy/stitch": "^1.0.1",
+    "@artsy/stitch": "^1.1.0",
     "express": "^4.15.4",
     "jade": "^1.11.0",
     "react": "^15.6.1"
