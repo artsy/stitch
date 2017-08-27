@@ -36,7 +36,7 @@ Usage
 - [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
 - [Precompiling templates](#precompiling-templates)
 - [Preact and other custom renderers](#custom-renderers)
-- [`<StyledComponents />` support](#styled-components)
+- [`<StyledComponents />` support](#styled-components-support)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
 
@@ -489,6 +489,49 @@ const html = await renderLayout({
     body: App
   }
 })
+```
+
+#### Styled Components Support  
+
+If your React app uses [`styled-components`](https://www.styled-components.com/), ensure you've installed [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components) and enable server-side rendering via config:
+
+```js
+import styled from 'styled-components'
+
+const html = await renderLayout({
+  layout: 'templates/layout.pug',
+  config: {
+    styledComponents: true
+  },
+  blocks: {
+    body: (props) => {
+      const Layout = styled.div`
+        background: purple;
+        border: 1px solid black;
+        color: white;
+        width: 100%;
+      `
+
+      return (
+        <Layout>
+          Hello Styled Components!
+        </Layout>
+      )
+    }
+  }
+})
+```
+
+Lastly, make sure to mount your styles in your layout template:
+
+```pug
+html
+  head
+    != css
+
+  body
+    #react-root
+      != body
 ```
 
 Full API
