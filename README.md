@@ -36,6 +36,7 @@ Usage
 - [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
 - [Precompiling templates](#precompiling-templates)
 - [Preact and other custom renderers](#custom-renderers)
+- [`<StyledComponents />` support](#styled-components)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
 
@@ -571,7 +572,18 @@ const html = await renderLayout({
      *
      * @type {Object}
      */
-    engines: {}
+    engines: {},
+
+    /**
+     * If your project uses <StyledComponents /> and you would like to extract
+     * styles from your component during server-side renders, set this to true.
+     *
+     * See https://www.styled-components.com/docs/advanced#server-side-rendering
+     * for more information.
+     *
+     * @type {Boolean}
+     */
+    styledComponents: false
   }
 })
 
