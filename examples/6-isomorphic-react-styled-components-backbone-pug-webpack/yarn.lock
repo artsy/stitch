@@ -3,24 +3,21 @@
 
 
 "@artsy/express-reloadable@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@artsy/express-reloadable/-/express-reloadable-1.0.8.tgz#25c04a2c8f3c986efa8b4e4092ab306b854749fa"
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@artsy/express-reloadable/-/express-reloadable-1.0.9.tgz#b8fdfc59e291394ef412ad8f97227d90fcdd843f"
   dependencies:
     chokidar "^1.7.0"
 
-"@artsy/stitch@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@artsy/stitch/-/stitch-1.0.1.tgz#c9f2018822975e94c9183d9d6c38b5591add9319"
+"@artsy/stitch@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@artsy/stitch/-/stitch-1.1.0.tgz#2e61d5957c240896b5d972f5ec512739d66d6d80"
   dependencies:
-    babel-cli "^6.26.0"
-    babel-preset-es2015 "^6.24.1"
-    babel-preset-react "^6.24.1"
-    babel-preset-stage-3 "^6.24.1"
     babel-runtime "^6.26.0"
     consolidate "^0.14.5"
     lodash "^4.17.4"
     react "^15.6.1"
     react-dom "^15.6.1"
+    styled-components "^2.1.2"
 
 abbrev@1:
   version "1.1.0"
@@ -3833,8 +3830,8 @@ styled-components@^2.1.2:
     supports-color "^3.2.3"
 
 stylis@^3.2.1:
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.2.11.tgz#8e9b99ed5e3b9b1b959c455f004c6effb7cf7331"
+  version "3.2.13"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.2.13.tgz#1a5d2ff5ab09f362d6d8065186d526740e9f4f24"
 
 supports-color@^2.0.0:
   version "2.0.0"
@@ -4179,13 +4176,9 @@ with@~4.0.0:
     acorn "^1.0.1"
     acorn-globals "^1.0.3"
 
-wordwrap@0.0.2:
+wordwrap@0.0.2, wordwrap@~0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
-
-wordwrap@~0.0.2:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

@@ -12,10 +12,6 @@ var _extends3 = require('babel-runtime/helpers/extends');
 
 var _extends4 = _interopRequireDefault(_extends3);
 
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
-
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
 var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -44,7 +40,8 @@ exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(asset, options) {
     var _this = this;
 
-    var isValid, html, keys, renderedBlocks, blockMap;
+    var isValid, _ref2, html, keys, renderedBlocks, blockMap, css;
+
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -56,11 +53,11 @@ exports.default = function () {
               break;
             }
 
-            throw new Error('(@artsy/stitch: lib/render) ' + 'Error rendering template: `asset` must be a string or an object.');
+            throw new Error('(@artsy/stitch: lib/render) ' + 'Error rendering template: attempting to render something other than a ' + 'string or an object.');
 
           case 3:
             if (!(0, _lodash.isString)(asset)) {
-              _context2.next = 16;
+              _context2.next = 17;
               break;
             }
 
@@ -69,26 +66,28 @@ exports.default = function () {
             return (0, _renderSwitch2.default)(asset, options);
 
           case 7:
-            html = _context2.sent;
+            _ref2 = _context2.sent;
+            html = _ref2.html;
             return _context2.abrupt('return', html);
 
-          case 11:
-            _context2.prev = 11;
+          case 12:
+            _context2.prev = 12;
             _context2.t0 = _context2['catch'](4);
 
             throwError(_context2.t0);
 
-          case 14:
-            _context2.next = 28;
+          case 15:
+            _context2.next = 30;
             break;
 
-          case 16:
+          case 17:
             keys = (0, _keys2.default)(asset);
-            _context2.prev = 17;
-            _context2.next = 20;
+            _context2.prev = 18;
+            _context2.next = 21;
             return _promise2.default.all(keys.map(function () {
-              var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(key) {
-                var html;
+              var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(key) {
+                var _ref4, html, css;
+
                 return _regenerator2.default.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -97,10 +96,16 @@ exports.default = function () {
                         return (0, _renderSwitch2.default)(asset[key], options);
 
                       case 2:
-                        html = _context.sent;
-                        return _context.abrupt('return', [key, html]);
+                        _ref4 = _context.sent;
+                        html = _ref4.html;
+                        css = _ref4.css;
+                        return _context.abrupt('return', {
+                          key: key,
+                          html: html,
+                          css: css
+                        });
 
-                      case 4:
+                      case 6:
                       case 'end':
                         return _context.stop();
                     }
@@ -109,33 +114,38 @@ exports.default = function () {
               }));
 
               return function (_x3) {
-                return _ref2.apply(this, arguments);
+                return _ref3.apply(this, arguments);
               };
             }()));
 
-          case 20:
+          case 21:
             renderedBlocks = _context2.sent;
-            blockMap = renderedBlocks.reduce(function (blockMap, _ref3) {
-              var _ref4 = (0, _slicedToArray3.default)(_ref3, 2),
-                  key = _ref4[0],
-                  html = _ref4[1];
-
+            blockMap = renderedBlocks.reduce(function (blockMap, _ref5) {
+              var key = _ref5.key,
+                  html = _ref5.html;
               return (0, _extends4.default)({}, blockMap, (0, _defineProperty3.default)({}, key, html));
             }, {});
-            return _context2.abrupt('return', blockMap);
+            css = renderedBlocks.filter(function (_ref6) {
+              var css = _ref6.css;
+              return !(0, _lodash.isEmpty)(css);
+            }).map(function (_ref7) {
+              var css = _ref7.css;
+              return css;
+            }).join('');
+            return _context2.abrupt('return', [blockMap, css]);
 
-          case 25:
-            _context2.prev = 25;
-            _context2.t1 = _context2['catch'](17);
+          case 27:
+            _context2.prev = 27;
+            _context2.t1 = _context2['catch'](18);
 
             throwError(_context2.t1);
 
-          case 28:
+          case 30:
           case 'end':
             return _context2.stop();
         }
       }
-    }, _callee2, this, [[4, 11], [17, 25]]);
+    }, _callee2, this, [[4, 12], [18, 27]]);
   }));
 
   function render(_x, _x2) {

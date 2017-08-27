@@ -23,7 +23,10 @@ yarn install @artsy/stitch
 - Alternatively, you use a templating library that relies on server-side includes. How to do the same?
 - The bulk of your app is built in Backbone, with each view backed by a Handlebars template. You'd still like to use your existing views / UI while incrementally migrating sections towards React. How to "render" each Backbone view inside of your React components -- or vice versa?
 - You've got a server-side-rendered, EJS-based app and you'd like to start taking advantage of React's isomorphic "universal" rendering. How to go about rendering React components on the server and then rehydrating them on the client?
+- You've got a new app built entirely in React but for one reason or another need to keep portions of the layout isolated from one another.
 - ...
+
+Out of the box, Stitch aims for flexibility.
 
 Usage
 -----
@@ -39,6 +42,8 @@ Usage
 - [`<StyledComponents />` support](#styled-components-support)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
+
+(If you want to jump right in, see the [full example project](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack).)
 
 #### Basic Example
 
@@ -124,8 +129,6 @@ console.log(html)
 You can add as many blocks as you need, which are accessible by key. Each block is evaluated and compiled, and then injected into the layout. Keep in mind that any field that accepts a path to a template can also accept a component (as either a Class or a stateless functional component), and template formats can be mixed and matched. This allows for a great amount of flexibility within seemingly incompatible view systems.
 
 #### Express.js and Pug
-
-And a slightly more complex example:
 
 **NOTE!** Each of the following use [async / await](https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016), which is available by default in Node >= 7.6.0. If your environment doesn't yet support async / await see the [Troubleshooting](#troubleshooting) section below for an example that uses ES6 Promises.
 
@@ -255,38 +258,31 @@ block body
 
 ...
 
-app.get('/home', async (req, res, next) => {
-  try {
-    const html = await renderLayout({
-      basePath: __dirname,
-      layout: 'templates/homeLayout.pug',
-      data: {
-        title: 'Hello how are you?',
-        description: 'Views extending views extending views...'
-      },
+const html = await renderLayout({
+  basePath: __dirname,
+  layout: 'templates/homeLayout.pug',
+  data: {
+    title: 'Hello how are you?',
+    description: 'Views extending views extending views...'
+  },
 
-      // Can also define locals, which are passed down to components under
-      // the `props.locals` key
-      locals: {
-        isAuthenticated: res.locals.userIsAuthenticated
-      },
-      blocks: {
-        head: 'templates/head.pug',
-        body: Body
-      }
-    })
-
-    res.send(html)
-  } catch (error) {
-    next(error)
+  // Can also define locals, which are passed down to components under
+  // the `props.locals` key
+  locals: {
+    isAuthenticated: req.locals.userIsAuthenticated
+  },
+  blocks: {
+    head: 'templates/head.pug',
+    body: Body
   }
 })
 
+res.send(html)
 ```
 
 #### Isomorpic (or "Universal") rendering
 
-This is covered in more depth in the [isomorphic-react-pug-webpack example](https://github.com/artsy/stitch/tree/master/examples/4-isomorphic-react-backbone-pug-webpack) but in short, since the `data` object is injected into the template before rendering takes place, making it available on the client is as easy as `JSON.stringifying` it:
+This is covered in more depth in the [isomorphic-react-pug-webpack example](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack) but in short, since the `data` object is injected into the template before rendering takes place, making it available on the client is as easy as `JSON.stringifying` it:
 
 ```pug
 // - templates/layout.pug
@@ -348,24 +344,15 @@ What to do if you have a bunch of old-school Backbone views that you don't want 
 
 ...
 
-app.get('/login', async (req, res, next) => {
-  try {
-    const html = await renderLayout({
-      layout: 'templates/loginLayout.pug',
-      blocks: {
-        app: App
-      },
-      templates: {
-        login: 'templates/login.pug'
-      }
-    })
-
-    res.send(html)
-  } catch (error) {
-    next(error)
+const html = await renderLayout({
+  layout: 'templates/loginLayout.pug',
+  blocks: {
+    app: App
+  },
+  templates: {
+    login: 'templates/login.pug'
   }
 })
-
 ```
 
 ```js
@@ -558,10 +545,12 @@ const html = await renderLayout({
    * Block sections to pass to template / components. A "block" typically
    * represents a discreet section (header, body, footer, etc) but can be
    * anything.
-   *
-   * @type {String|Component}
    */
-  blocks: {},
+  blocks: {
+    /**
+     * @type {String|Component}
+     */
+  },
 
   /**
    * Locals represent Express.js locals as they flow through the `req` / `res`
@@ -570,29 +559,35 @@ const html = await renderLayout({
    *
    * Accessible from within components via `props.locals` and from within a
    * template via `locals`
-   *
-   * @type {*}
    */
-  locals: {},
+  locals: {
+    /**
+     * @type {*}
+     */
+  },
 
   /**
    * Data that is passed to templates and components. Embedded directly
    * within template code, but also accessible via `data` (useful for
    * JSON.stringify'ing and passing down the wire for rehydration). In a
    * component, it represents `props` and is accessible as such.
-   *
-   * @type {*}
    */
-  data: {},
+  data: {
+    /**
+     * @type {*}
+     */
+  },
 
   /**
    * Templates / Components that are precompiled and passed along as rendered
    * html strings. From within your component, template html is accessible via
    * `props.templates`
-   *
-   * @type {String|Component}
    */
-  templates: {},
+  templates: {
+    /**
+     * @type {String|Component}
+     */
+  },
 
   config: {
 
@@ -601,7 +596,7 @@ const html = await renderLayout({
      * ReactDOM, but any kind of engine can be passed in and accommodated
      * assuming it returns a string of rendered markup.
      *
-     * @type {Object}
+     * @type {Function}
      */
     componentRenderer: ReactDOM.renderToString,
 
@@ -612,10 +607,12 @@ const html = await renderLayout({
      * engines: {
      *   pug: (filePath, locals) => string
      * }
-     *
-     * @type {Object}
      */
-    engines: {},
+    engines: {
+      /**
+       * @type {Function}
+       */
+    },
 
     /**
      * If your project uses <StyledComponents /> and you would like to extract

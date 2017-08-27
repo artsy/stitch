@@ -39,7 +39,7 @@ exports.default = function () {
               case 0:
                 extensionRe = /(?:\.([^.]+))?$/;
                 ext = extensionRe.exec(file)[0].replace('.', '');
-                compileFn = _consolidate2.default[ext];
+                compileFn = config.engines[ext] ? config.engines[ext] : _consolidate2.default[ext];
 
                 if ((0, _lodash.isFunction)(compileFn)) {
                   _context.next = 5;
@@ -83,13 +83,15 @@ exports.default = function () {
 
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    var _options$basePath, basePath, _options$locals, locals, rendered;
+    var _options$basePath, basePath, _options$locals, locals, _options$config, config, rendered;
 
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _options$basePath = options.basePath, basePath = _options$basePath === undefined ? process.cwd() : _options$basePath, _options$locals = options.locals, locals = _options$locals === undefined ? {} : _options$locals;
+            _options$basePath = options.basePath, basePath = _options$basePath === undefined ? process.cwd() : _options$basePath, _options$locals = options.locals, locals = _options$locals === undefined ? {} : _options$locals, _options$config = options.config, config = _options$config === undefined ? {
+              engines: {}
+            } : _options$config;
             _context2.prev = 1;
 
             if (!(0, _lodash.isArray)(template)) {
