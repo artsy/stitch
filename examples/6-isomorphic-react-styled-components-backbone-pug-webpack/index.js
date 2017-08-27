@@ -26,6 +26,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 // Apps
 app.use(mountAndReload('./apps/home'))
 app.use(mountAndReload('./apps/backbone'))
+app.use(mountAndReload('./apps/styled-components'))
 
 app.listen(3000, () => {
   console.log('Listening on port 3000.')

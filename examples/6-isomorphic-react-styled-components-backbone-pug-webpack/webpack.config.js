@@ -10,6 +10,10 @@ module.exports = {
     backbone: [
       'webpack-hot-middleware/client',
       './apps/backbone/client.js'
+    ],
+    styled_components: [
+      'webpack-hot-middleware/client',
+      './apps/styled-components/client.js'
     ]
   },
   output: {

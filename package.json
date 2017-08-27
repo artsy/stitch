@@ -6,10 +6,10 @@
   "repository": "git@github.com:artsy/stitch.git",
   "license": "MIT",
   "scripts": {
-    "build": "babel lib --ignore lib/__tests__ --out-dir dist",
+    "build": "yarn clean:build && babel lib --ignore lib/__tests__ --out-dir dist",
     "clean:build": "rm -rf dist",
     "coverage": "jest --coverage",
-    "prepublishOnly": "yarn clean:build && yarn build",
+    "prepublishOnly": "yarn build",
     "test": "jest",
     "test:watch": "jest --watch"
   },

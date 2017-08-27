@@ -1,6 +1,6 @@
 import App from './components/App'
 import express from 'express'
-import { renderLayout } from '@artsy/stitch'
+import { renderLayout } from '../../../../lib'
 
 const app = module.exports = express()
 
@@ -15,11 +15,8 @@ const routes = {
           body: App
         },
         data: {
-          title: 'Backbone',
-          description: 'Templates can be precompiled and passed to components for mounting on client. Open console and click buttons; logging is coming from UsersView.js, a Backbone component.'
-        },
-        templates: {
-          users: 'templates/users.pug'
+          title: 'Isomorphic React/Backbone/Pug/Webpack Example',
+          subtitle: 'Home'
         }
       })
 
@@ -30,4 +27,5 @@ const routes = {
   }
 }
 
-app.get('/backbone', routes.index)
+app.get('/', routes.index)
+app.get('/home', routes.index)

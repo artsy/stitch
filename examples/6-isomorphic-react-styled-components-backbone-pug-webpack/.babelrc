@@ -5,6 +5,8 @@
     "stage-3"
   ],
   "plugins": [
-    "transform-runtime"
+    "styled-components",
+    "transform-runtime",
+    "transform-class-properties"
   ]
 }
