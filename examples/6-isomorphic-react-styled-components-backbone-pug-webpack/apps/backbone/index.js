@@ -1,6 +1,6 @@
 import App from './components/App'
 import express from 'express'
-import { renderLayout } from '../../../../lib'
+import { renderLayout } from '@artsy/stitch'
 
 const app = module.exports = express()
 

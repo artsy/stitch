@@ -1,7 +1,7 @@
 import React from 'react'
 import express from 'express'
 import styled from 'styled-components'
-import { renderLayout } from '../../lib' // from '@artsy/stitch'
+import { renderLayout } from '@artsy/stitch'
 
 const app = module.exports = express()
 
