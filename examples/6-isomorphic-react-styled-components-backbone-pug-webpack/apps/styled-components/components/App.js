@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Layout = styled.div`
@@ -8,30 +8,17 @@ const Layout = styled.div`
   padding: 50px;
 `
 
-export default class App extends Component {
-  componentDidMount () {
-    console.log('Component mounted on client-side')
-  }
+export default function App (props, context) {
+  const { title } = props
 
-  handleButtonClick = () => {
-    console.log('clicking button')
-  }
-
-  render () {
-    const { title, subtitle } = this.props
-
-    return (
-      <Layout>
-        <h3>
-          {title}
-        </h3>
-        <h4>
-          {subtitle}
-        </h4>
-        <p>
-          Hello from Styled Components! Please view your source and open your console and <button onClick={this.handleButtonClick}>click here</button>
-        </p>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <h3>
+        {title}
+      </h3>
+      <p>
+        Hello from Styled Components!
+      </p>
+    </Layout>
+  )
 }

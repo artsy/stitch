@@ -28,7 +28,8 @@
     "consolidate": "^0.14.5",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "styled-components": "^2.1.2"
   },
   "devDependencies": {
     "@artsy/express-reloadable": "^1.0.6",
@@ -50,7 +51,6 @@
     "handlebars": "^4.0.10",
     "jade": "^1.11.0",
     "jest": "^20.0.4",
-    "pug": "^2.0.0-rc.3",
-    "styled-components": "^2.1.2"
+    "pug": "^2.0.0-rc.3"
   }
 }

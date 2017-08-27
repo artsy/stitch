@@ -1,12 +1,13 @@
 extends ../../../templates/mainLayout 
 
 block head
-  script.
-    var __BOOTSTRAP__ = !{JSON.stringify(data)}
-    
   != head
+  != css
 
 block body 
+  script.
+    var __BOOTSTRAP__ = !{JSON.stringify(data)}
+
   #react-root
     != body
   
