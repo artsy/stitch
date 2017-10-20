@@ -32,29 +32,28 @@ exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(template) {
     var compile = function () {
       var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(file) {
-        var extensionRe, ext, compileFn, filePath, html;
+        var ext, compileFn, filePath, html;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                extensionRe = /(?:\.([^.]+))?$/;
-                ext = extensionRe.exec(file)[0].replace('.', '');
+                ext = _path2.default.extname(file).replace('.', '');
                 compileFn = config.engines[ext] ? config.engines[ext] : _consolidate2.default[ext];
 
                 if ((0, _lodash.isFunction)(compileFn)) {
-                  _context.next = 5;
+                  _context.next = 4;
                   break;
                 }
 
                 throw new Error('(@artsy/stitch: lib/renderTemplate) ' + ('Error rendering template with extension ' + ext + ': Can only render ') + 'templates supported by https://www.npmjs.com/package/consolidate.');
 
-              case 5:
+              case 4:
                 filePath = _path2.default.join(basePath, file);
-                _context.prev = 6;
-                _context.next = 9;
+                _context.prev = 5;
+                _context.next = 8;
                 return compileFn(filePath, locals);
 
-              case 9:
+              case 8:
                 html = _context.sent;
 
 
@@ -63,17 +62,17 @@ exports.default = function () {
 
                 return _context.abrupt('return', html);
 
-              case 14:
-                _context.prev = 14;
-                _context.t0 = _context['catch'](6);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context['catch'](5);
                 throw new Error(_context.t0.message);
 
-              case 17:
+              case 16:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this, [[6, 14]]);
+        }, _callee, this, [[5, 13]]);
       }));
 
       return function compile(_x3) {

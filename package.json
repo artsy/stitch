@@ -1,6 +1,6 @@
 {
   "name": "@artsy/stitch",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Helps your Component and Template dependencies peacefully coexist",
   "main": "./dist/index.js",
   "repository": "git@github.com:artsy/stitch.git",
@@ -26,7 +26,9 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "consolidate": "^0.14.5",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "styled-components": "^2.1.2"
