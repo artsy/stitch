@@ -1,6 +1,6 @@
 {
   "name": "@artsy/stitch",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Helps your Component and Template dependencies peacefully coexist",
   "main": "./dist/index.js",
   "repository": "git@github.com:artsy/stitch.git",
@@ -31,7 +31,7 @@
   "peerDependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.2.3"
   },
   "devDependencies": {
     "@artsy/express-reloadable": "^1.0.6",
