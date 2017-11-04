@@ -38,7 +38,7 @@ exports.default = function () {
             switch (_context.prev = _context.next) {
               case 0:
                 ext = _path2.default.extname(file).replace('.', '');
-                compileFn = config.engines[ext] ? config.engines[ext] : _consolidate2.default[ext];
+                compileFn = config.engines[ext] || _consolidate2.default[ext];
 
                 if ((0, _lodash.isFunction)(compileFn)) {
                   _context.next = 4;
