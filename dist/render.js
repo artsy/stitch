@@ -156,5 +156,6 @@ exports.default = function () {
 }();
 
 var throwError = function throwError(error) {
+  console.error(error);
   throw new Error(error);
 };
