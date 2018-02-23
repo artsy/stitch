@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.isTemplate = isTemplate;
 exports.isComponent = isComponent;
 
-var _lodash = require('lodash');
+var _lodash = require("lodash");
 
 function isTemplate(template) {
   if (!(0, _lodash.isString)(template)) {
@@ -14,7 +14,6 @@ function isTemplate(template) {
   }
 
   var BLACKLIST = ['.js', '.jsx', '.ts', '.tsx'];
-
   var found = BLACKLIST.some(function (extension) {
     return template.includes(extension);
   });

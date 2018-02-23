@@ -7,8 +7,8 @@ export default async function render (asset, options) {
   if (!isValid) {
     throw new Error(
       '(@artsy/stitch: lib/render) ' +
-      'Error rendering template: attempting to render something other than a ' +
-      'string or an object.'
+        'Error rendering template: attempting to render something other than a ' +
+        'string or an object.'
     )
   }
 
@@ -24,7 +24,7 @@ export default async function render (asset, options) {
 
     try {
       const renderedBlocks = await Promise.all(
-        keys.map(async key => {
+        keys.map(async (key) => {
           const { html, css } = await renderSwitch(asset[key], options)
 
           return {
@@ -35,18 +35,20 @@ export default async function render (asset, options) {
         })
       )
 
-      const blockMap = renderedBlocks
-        .reduce((blockMap, { key, html }) => ({
+      const blockMap = renderedBlocks.reduce(
+        (blockMap, { key, html }) => ({
           ...blockMap,
           [key]: html
-        }), {})
+        }),
+        {}
+      )
 
       const css = renderedBlocks
         .filter(({ css }) => !isEmpty(css))
         .map(({ css }) => css)
         .join('')
 
-      return [ blockMap, css ]
+      return [blockMap, css]
     } catch (error) {
       throwError(error)
     }

@@ -18,9 +18,7 @@ export default async function renderTemplate (template, options = {}) {
 
     return rendered
   } catch (error) {
-    throw new Error(
-      `(@artsy/stitch: lib/renderTemplate) ${error.message}`
-    )
+    throw new Error(`(@artsy/stitch: lib/renderTemplate) ${error.message}`)
   }
 
   async function compile (file) {
@@ -31,8 +29,8 @@ export default async function renderTemplate (template, options = {}) {
     if (!isFunction(compileFn)) {
       throw new Error(
         '(@artsy/stitch: lib/renderTemplate) ' +
-        `Error rendering template with extension ${ext}: Can only render ` +
-        'templates supported by https://www.npmjs.com/package/consolidate.'
+          `Error rendering template with extension ${ext}: Can only render ` +
+          'templates supported by https://www.npmjs.com/package/consolidate.'
       )
     }
 

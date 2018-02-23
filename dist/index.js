@@ -1,39 +1,44 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.renderLayout = undefined;
+exports.renderLayout = renderLayout;
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _regenerator2 = _interopRequireDefault(_regenerator);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+var _server = _interopRequireDefault(require("react-dom/server"));
 
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+var _render = _interopRequireDefault(require("./render"));
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+function renderLayout(_x) {
+  return _renderLayout.apply(this, arguments);
+}
 
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+function _renderLayout() {
+  _renderLayout = (0, _asyncToGenerator2.default)(
+  /*#__PURE__*/
+  _regenerator.default.mark(function _callee(options) {
+    var layout, _options$blocks, blocks, _options$config, config, _options$data, data, _options$locals, locals, _options$templates, templates, _ref, _ref2, renderedTemplates, _ref3, _ref4, renderedBlocks, css, renderedHtml;
 
-var renderLayout = exports.renderLayout = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(options) {
-    var layout, _options$blocks, blocks, _options$config, config, _options$data, data, _options$locals, locals, _options$templates, templates, _ref2, _ref3, renderedTemplates, _ref4, _ref5, renderedBlocks, css, renderedHtml;
-
-    return _regenerator2.default.wrap(function _callee$(_context) {
+    return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            layout = options.layout, _options$blocks = options.blocks, blocks = _options$blocks === undefined ? {} : _options$blocks, _options$config = options.config, config = _options$config === undefined ? { // eslint-disable-line
-              componentRenderer: _server2.default.renderToString,
+            layout = options.layout, _options$blocks = options.blocks, blocks = _options$blocks === void 0 ? {} : _options$blocks, _options$config = options.config, config = _options$config === void 0 ? {
+              // eslint-disable-line
+              componentRenderer: _server.default.renderToString,
               engines: {},
               styledComponents: false
-            } : _options$config, _options$data = options.data, data = _options$data === undefined ? {} : _options$data, _options$locals = options.locals, locals = _options$locals === undefined ? {} : _options$locals, _options$templates = options.templates, templates = _options$templates === undefined ? {} : _options$templates;
+            } : _options$config, _options$data = options.data, data = _options$data === void 0 ? {} : _options$data, _options$locals = options.locals, locals = _options$locals === void 0 ? {} : _options$locals, _options$templates = options.templates, templates = _options$templates === void 0 ? {} : _options$templates;
 
             if (layout) {
               _context.next = 3;
@@ -44,25 +49,27 @@ var renderLayout = exports.renderLayout = function () {
 
           case 3:
             _context.next = 5;
-            return (0, _render2.default)(templates, options);
+            return (0, _render.default)(templates, options);
 
           case 5:
-            _ref2 = _context.sent;
-            _ref3 = (0, _slicedToArray3.default)(_ref2, 1);
-            renderedTemplates = _ref3[0];
+            _ref = _context.sent;
+            _ref2 = (0, _slicedToArray2.default)(_ref, 1);
+            renderedTemplates = _ref2[0];
             _context.next = 10;
-            return (0, _render2.default)(blocks, (0, _extends3.default)({}, options, { templates: renderedTemplates }));
+            return (0, _render.default)(blocks, (0, _extends2.default)({}, options, {
+              templates: renderedTemplates
+            }));
 
           case 10:
-            _ref4 = _context.sent;
-            _ref5 = (0, _slicedToArray3.default)(_ref4, 2);
-            renderedBlocks = _ref5[0];
-            css = _ref5[1];
+            _ref3 = _context.sent;
+            _ref4 = (0, _slicedToArray2.default)(_ref3, 2);
+            renderedBlocks = _ref4[0];
+            css = _ref4[1];
             _context.next = 16;
-            return (0, _render2.default)(layout, (0, _extends3.default)({}, options, {
-              locals: (0, _extends3.default)({}, locals, renderedBlocks, {
+            return (0, _render.default)(layout, (0, _extends2.default)({}, options, {
+              locals: (0, _extends2.default)({}, locals, renderedBlocks, {
                 css: css,
-                data: (0, _extends3.default)({}, data, {
+                data: (0, _extends2.default)({}, data, {
                   templates: renderedTemplates
                 })
               })
@@ -70,27 +77,14 @@ var renderLayout = exports.renderLayout = function () {
 
           case 16:
             renderedHtml = _context.sent;
-            return _context.abrupt('return', renderedHtml);
+            return _context.abrupt("return", renderedHtml);
 
           case 18:
-          case 'end':
+          case "end":
             return _context.stop();
         }
       }
     }, _callee, this);
   }));
-
-  return function renderLayout(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var _server = require('react-dom/server');
-
-var _server2 = _interopRequireDefault(_server);
-
-var _render = require('./render');
-
-var _render2 = _interopRequireDefault(_render);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  return _renderLayout.apply(this, arguments);
+}
