@@ -34,7 +34,6 @@ function _renderLayout() {
         switch (_context.prev = _context.next) {
           case 0:
             layout = options.layout, _options$blocks = options.blocks, blocks = _options$blocks === void 0 ? {} : _options$blocks, _options$config = options.config, config = _options$config === void 0 ? {
-              // eslint-disable-line
               componentRenderer: _server.default.renderToString,
               engines: {},
               styledComponents: false
