@@ -1,6 +1,6 @@
 # @artsy/stitch
 
-[![Build Status](https://travis-ci.com/artsy/stitch.svg?token=gy99gfdxXxqG3ydmn6xq&branch=master)](https://travis-ci.com/artsy/layout)
+[![Build Status](https://travis-ci.com/artsy/stitch.svg?token=gy99gfdxXxqG3ydmn6xq&branch=master)](https://travis-ci.com/artsy/stitch)
 
 Helps your Component and Template dependencies peacefully coexist
 
@@ -19,29 +19,29 @@ yarn install @artsy/stitch
 ```
 
 ### Example Scenarios / Who This Library is Aimed At
-- Your UI is built in Jade/Pug or other layout based-engines, and you use "block" functionality. How to inject React components into each while maintaining backwards compatibility?
-- Alternatively, you use a templating library that relies on server-side includes. How to do the same?
-- The bulk of your app is built in Backbone, with each view backed by a Handlebars template. You'd still like to use your existing views / UI while incrementally migrating sections towards React. How to "render" each Backbone view inside of your React components -- or vice versa?
-- You've got a server-side-rendered, EJS-based app and you'd like to start taking advantage of React's isomorphic "universal" rendering. How to go about rendering React components on the server and then rehydrating them on the client?
-- You've got a new app built entirely in React but for one reason or another need to keep portions of the layout isolated from one another.
-- ...
+
+* Your UI is built in Jade/Pug or other layout based-engines, and you use "block" functionality. How to inject React components into each while maintaining backwards compatibility?
+* Alternatively, you use a templating library that relies on server-side includes. How to do the same?
+* The bulk of your app is built in Backbone, with each view backed by a Handlebars template. You'd still like to use your existing views / UI while incrementally migrating sections towards React. How to "render" each Backbone view inside of your React components -- or vice versa?
+* You've got a server-side-rendered, EJS-based app and you'd like to start taking advantage of React's isomorphic "universal" rendering. How to go about rendering React components on the server and then rehydrating them on the client?
+* You've got a new app built entirely in React but for one reason or another need to keep portions of the layout isolated from one another.
+* ...
 
 Out of the box, Stitch aims for flexibility.
 
-Usage
------
+## Usage
 
 **Table of Contents**
 
-- [Basic Example](#basic)
-- [Express.js](#expressjs-and-pug)
-- [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
-- [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
-- [Precompiling templates](#precompiling-templates)
-- [Preact and other custom renderers](#custom-renderers)
-- [`<StyledComponents />` support](#styled-components-support)
-- [Full API](#full-api)
-- [Troubleshooting](#troubleshooting)
+* [Basic Example](#basic)
+* [Express.js](#expressjs-and-pug)
+* [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
+* [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
+* [Precompiling templates](#precompiling-templates)
+* [Preact and other custom renderers](#custom-renderers)
+* [`<StyledComponents />` support](#styled-components-support)
+* [Full API](#full-api)
+* [Troubleshooting](#troubleshooting)
 
 (If you want to jump right in, see the [full example project](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack).)
 
@@ -149,7 +149,8 @@ app.get('/', async (req, res, next) => {
       layout: 'templates/mainLayout.pug',
       data: {
         title: 'Hello World!',
-        description: 'An example showing how to take a view structure based in .pug and interpolate with React'
+        description:
+          'An example showing how to take a view structure based in .pug and interpolate with React'
       },
       blocks: {
         head: 'templates/head.pug',
@@ -167,7 +168,6 @@ app.get('/', async (req, res, next) => {
 app.listen(3000, () => {
   console.log('Listening on port 3000.')
 })
-
 ```
 
 ```pug
@@ -194,15 +194,11 @@ meta( name='description', content= description )
 ```js
 // components/Body.js
 
-export default function Body ({ title, description }) {
+export default function Body({ title, description }) {
   return (
     <div>
-      <h3>
-        {title}
-      </h3>
-      <p>
-        {description}
-      </p>
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   )
 }
@@ -211,12 +207,8 @@ export default function Body ({ title, description }) {
 ```js
 // components/Footer.js
 
-export default function Footer () {
-  return (
-    <h4>
-      Hello footer!
-    </h4>
-  )
+export default function Footer() {
+  return <h4>Hello footer!</h4>
 }
 ```
 
@@ -329,10 +321,7 @@ export default class App extends Component {
 ```js
 // client.js
 
-React.render(
-  <App {...window.__BOOTSTRAP__} />
-)
-
+React.render(<App {...window.__BOOTSTRAP__} />)
 ```
 
 #### Precompiling Templates
@@ -361,12 +350,8 @@ const html = await renderLayout({
 import React from 'react'
 import Login from './Login'
 
-export default function App (props) {
-  const {
-    templates: {
-      login
-    }
-  } = props
+export default function App(props) {
+  const { templates: { login } } = props
 
   return (
     <div>
@@ -438,7 +423,6 @@ module.exports = LoginView
 
 The template is precompiled, and the html is available from within your React components to mount and unmount as necessary under the `props.templates` key.
 
-
 #### Custom Renderers
 
 If you would prefer to use a rendering engine other than React, no problem -- just pass in a custom render function that returns a string:
@@ -478,7 +462,7 @@ const html = await renderLayout({
 })
 ```
 
-#### Styled Components Support  
+#### Styled Components Support
 
 If your React app uses [`styled-components`](https://www.styled-components.com/), ensure you've installed [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components) and enable server-side rendering via config:
 
@@ -521,8 +505,7 @@ html
       != body
 ```
 
-Full API
---------
+## Full API
 
 ```js
 const html = await renderLayout({
@@ -626,11 +609,9 @@ const html = await renderLayout({
     styledComponents: false
   }
 })
-
 ```
 
-Troubleshooting
----------------
+## Troubleshooting
 
 > Help! My view doesn't render and there's an `Unexpected token (` in my console.
 
@@ -638,10 +619,10 @@ All of the examples assume that you've enabled [async / await](https://medium.co
 
 ```js
 renderLayout({ layout: 'layout.ejs' })
-  .then(html => {
+  .then((html) => {
     res.send(html)
   })
-  .catch(error => {
+  .catch((error) => {
     next(error)
   })
 ```

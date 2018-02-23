@@ -5,7 +5,7 @@ export async function renderLayout (options) {
   const {
     layout,
     blocks = {},
-    config = { // eslint-disable-line
+    config = {
       componentRenderer: ReactDOM.renderToString,
       engines: {},
       styledComponents: false
@@ -18,12 +18,15 @@ export async function renderLayout (options) {
   if (!layout) {
     throw new Error(
       '(@artsy/stitch: lib/index) ' +
-      'Error rendering layout: A `layout` file is required.'
+        'Error rendering layout: A `layout` file is required.'
     )
   }
 
-  const [ renderedTemplates ] = await render(templates, options)
-  const [ renderedBlocks, css ] = await render(blocks, { ...options, templates: renderedTemplates })
+  const [renderedTemplates] = await render(templates, options)
+  const [renderedBlocks, css] = await render(blocks, {
+    ...options,
+    templates: renderedTemplates
+  })
   const renderedHtml = await render(layout, {
     ...options,
     locals: {

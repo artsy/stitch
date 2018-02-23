@@ -19,16 +19,16 @@ describe('lib/renderTemplate', () => {
     const title = 'hey'
     const jadeProp = 'hi jade'
 
-    const templates = await renderTemplate([
-      'templates/head.ejs',
-      'templates/body.jade'
-    ], {
-      basePath: path.join(__dirname, 'fixtures'),
-      locals: {
-        title,
-        jadeProp
+    const templates = await renderTemplate(
+      ['templates/head.ejs', 'templates/body.jade'],
+      {
+        basePath: path.join(__dirname, 'fixtures'),
+        locals: {
+          title,
+          jadeProp
+        }
       }
-    })
+    )
 
     expect(templates[0]).toMatch(title)
     expect(templates[1]).toMatch(jadeProp)
@@ -59,7 +59,7 @@ describe('lib/renderTemplate', () => {
       config: {
         engines: {
           ejs: (filePath, locals) => {
-            return output({...locals})
+            return output({ ...locals })
           }
         }
       }

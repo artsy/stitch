@@ -5,14 +5,9 @@ export function isTemplate (template) {
     return false
   }
 
-  const BLACKLIST = [
-    '.js',
-    '.jsx',
-    '.ts',
-    '.tsx'
-  ]
+  const BLACKLIST = ['.js', '.jsx', '.ts', '.tsx']
 
-  const found = BLACKLIST.some(extension => template.includes(extension))
+  const found = BLACKLIST.some((extension) => template.includes(extension))
   return !found
 }
 
@@ -22,7 +17,7 @@ export function isComponent (Component) {
   } else {
     throw new Error(
       '(@artsy/stitch: lib/utils) ' +
-      'Error rendering layout: Invalid component.'
+        'Error rendering layout: Invalid component.'
     )
   }
 }

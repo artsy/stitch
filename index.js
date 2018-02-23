@@ -1,6 +1,4 @@
-require('babel-core/register')
-
-const { renderLayout } = require('./lib')
+const { renderLayout } = require('./src')
 
 module.exports = {
   renderLayout

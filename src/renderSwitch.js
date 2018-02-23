@@ -45,16 +45,12 @@ export default async function renderSwitch (block, options) {
         const sheet = new ServerStyleSheet()
 
         html = config.componentRenderer(
-          sheet.collectStyles(
-            <Component {...props} />
-          )
+          sheet.collectStyles(<Component {...props} />)
         )
 
         css = sheet.getStyleTags()
       } else {
-        html = config.componentRenderer(
-          <Component {...props} />
-        )
+        html = config.componentRenderer(<Component {...props} />)
       }
     } else {
       html = config.componentRenderer(block(props))
@@ -63,8 +59,8 @@ export default async function renderSwitch (block, options) {
     if (process.env.NODE_ENV === 'development') {
       throw new Error(
         '@artsy/stitch: (lib/index) ' +
-        'Error rendering layout: `block` must be a template, React ' +
-        'component or string'
+          'Error rendering layout: `block` must be a template, React ' +
+          'component or string'
       )
     }
   }

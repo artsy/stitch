@@ -25,16 +25,19 @@ describe('lib/render', () => {
     const name = 'K'
     const age = '1000'
 
-    const [ displayObj ] = await render({
-      name: 'templates/name.jade',
-      age: (props) => <div>{props.age}</div>
-    }, {
-      basePath: path.join(__dirname, 'fixtures'),
-      data: {
-        name,
-        age
+    const [displayObj] = await render(
+      {
+        name: 'templates/name.jade',
+        age: (props) => <div>{props.age}</div>
+      },
+      {
+        basePath: path.join(__dirname, 'fixtures'),
+        data: {
+          name,
+          age
+        }
       }
-    })
+    )
 
     expect(keys(displayObj)).toEqual(['name', 'age'])
     expect(displayObj.name).toMatch(name)
