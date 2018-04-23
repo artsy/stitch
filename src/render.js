@@ -1,7 +1,7 @@
 import renderSwitch from './renderSwitch'
 import { isEmpty, isString, isObject } from 'lodash'
 
-export default async function render (asset, options) {
+export default async function render(asset, options) {
   const isValid = isString(asset) || isObject(asset)
 
   if (!isValid) {
@@ -24,7 +24,7 @@ export default async function render (asset, options) {
 
     try {
       const renderedBlocks = await Promise.all(
-        keys.map(async (key) => {
+        keys.map(async key => {
           const { html, css } = await renderSwitch(asset[key], options)
 
           return {
@@ -55,7 +55,7 @@ export default async function render (asset, options) {
   }
 }
 
-const throwError = (error) => {
+const throwError = error => {
   console.error(error)
   throw new Error(error)
 }

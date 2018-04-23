@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/server'
 import render from './render'
 
-export async function renderLayout (options) {
+export async function renderLayout(options) {
   const {
     layout,
     blocks = {},

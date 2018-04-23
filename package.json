@@ -14,7 +14,6 @@
     "test:watch": "jest --watch"
   },
   "prettier": {
-    "arrowParens": "always",
     "bracketSpacing": true,
     "semi": false,
     "singleQuote": true

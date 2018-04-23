@@ -2,7 +2,7 @@ import cons from 'consolidate'
 import path from 'path'
 import { isArray, isFunction } from 'lodash'
 
-export default async function renderTemplate (template, options = {}) {
+export default async function renderTemplate(template, options = {}) {
   const {
     basePath = process.cwd(),
     locals = {},
@@ -21,7 +21,7 @@ export default async function renderTemplate (template, options = {}) {
     throw new Error(`(@artsy/stitch: lib/renderTemplate) ${error.message}`)
   }
 
-  async function compile (file) {
+  async function compile(file) {
     const ext = path.extname(file).replace('.', '')
 
     const compileFn = config.engines[ext] || cons[ext]

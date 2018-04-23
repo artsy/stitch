@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server'
 import renderTemplate from './renderTemplate'
 import { isComponent, isTemplate } from './utils'
 
-export default async function renderSwitch (block, options) {
+export default async function renderSwitch(block, options) {
   let html = ''
   let css = ''
 
