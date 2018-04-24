@@ -19,10 +19,9 @@ const modes = {
 
 export function componentRenderer(config) {
   const {
-    mode = modes.SERVER,
     modules,
-    serialize = x => x
-    //
+    mode = modes.SERVER,
+    serialize = component => component
   } = config
 
   const components = Object.keys(modules).reduce((moduleMap, moduleName) => {

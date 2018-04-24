@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { componentRenderer } from '../componentRenderer'
+import { uniq } from 'lodash'
 
 const modules = {
   Foo: () => <div>foo</div>,
@@ -20,8 +21,6 @@ describe('componentRenderer', () => {
     })
 
     it('renders component html', () => {
-      const renderQueue = []
-
       const { components } = componentRenderer({
         mode: 'server',
         modules
@@ -66,12 +65,7 @@ describe('componentRenderer', () => {
       const [bar] = components.Bar().match(/stitch-component-\d/)
       const [baz] = components.Baz().match(/stitch-component-\d/)
 
-      expect(foo !== bar).toBe(true)
-      expect(foo !== baz).toBe(true)
-      expect(bar !== foo).toBe(true)
-      expect(bar !== baz).toBe(true)
-      expect(baz !== foo).toBe(true)
-      expect(baz !== bar).toBe(true)
+      expect(uniq([foo, bar, baz]).length).toEqual(3)
     })
 
     it('serializes itself to be passed to the client', () => {
@@ -113,7 +107,7 @@ describe('componentRenderer', () => {
       serverSide.Baz()
 
       const { components: clientSide, mountOnClient } = componentRenderer({
-        mode: 'server',
+        mode: 'client',
         modules
       })
 

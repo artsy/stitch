@@ -17,7 +17,7 @@ export async function renderLayout(options) {
 
   if (!layout) {
     throw new Error(
-      '(@artsy/stitch: lib/index) ' +
+      '(@artsy/stitch: lib/renderLayout) ' +
         'Error rendering layout: A `layout` file is required.'
     )
   }

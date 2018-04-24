@@ -1,7 +1,7 @@
 import { componentRenderer } from './componentRenderer'
 
 export function middleware(modules) {
-  return (req, res, next) => {
+  return (_req, res, next) => {
     const renderQueue = []
 
     const { components } = componentRenderer({
