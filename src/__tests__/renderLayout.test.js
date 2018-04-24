@@ -3,7 +3,7 @@ import path from 'path'
 import { keys, merge, omit } from 'lodash'
 import { renderLayout } from '../'
 
-describe('lib/index', () => {
+describe('lib/renderLayout', () => {
   const config = (options = {}) => {
     return merge(
       {
@@ -70,7 +70,7 @@ describe('lib/index', () => {
             name
           },
           blocks: {
-            body: (props) => {
+            body: props => {
               expect(props.name).toMatch(name)
 
               return <div />
@@ -104,7 +104,7 @@ describe('lib/index', () => {
         const html = await renderLayout(
           config({
             blocks: {
-              body: (props) => {
+              body: props => {
                 expect(props.jadeProp).toMatch(jadeProp)
                 return <div>{props.jadeProp}</div>
               }
@@ -138,7 +138,7 @@ describe('lib/index', () => {
         const html = await renderLayout(
           config({
             blocks: {
-              body: (props) => {
+              body: props => {
                 const { templates: { pugTemplate } } = props
 
                 expect(pugTemplate).toMatch('<div>testing pug template</div>')
@@ -165,7 +165,7 @@ describe('lib/index', () => {
         const html = await renderLayout(
           config({
             blocks: {
-              body: (props) => {
+              body: props => {
                 const { templates: { reactComponent } } = props
 
                 return (
@@ -198,7 +198,7 @@ describe('lib/index', () => {
         ).rejects.toBeDefined()
       })
 
-      it('returns a `templates` object containing rendered html by key', async (done) => {
+      it('returns a `templates` object containing rendered html by key', async done => {
         await renderLayout(
           config({
             blocks: {

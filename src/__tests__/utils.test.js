@@ -18,7 +18,7 @@ describe('lib/utils', () => {
   describe('#isComponent', () => {
     it('returns true if Component is a react component', () => {
       class A extends Component {
-        render () {
+        render() {
           return <div />
         }
       }

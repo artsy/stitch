@@ -32,28 +32,29 @@
     "Artsy <https://artsy.net>"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.40",
+    "@babel/runtime": "^7.0.0-beta.46",
     "consolidate": "^0.14.5",
     "lodash": "^4.17.4"
   },
   "peerDependencies": {
-    "react": "^15 || ^16",
-    "react-dom": "^15 || ^16",
-    "styled-components": "^2 || ^3"
+    "react": "^16",
+    "react-dom": "^16",
+    "styled-components": "^3"
   },
   "devDependencies": {
     "@artsy/express-reloadable": "^1.0.6",
-    "@babel/cli": "^7.0.0-beta.40",
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-react": "^7.0.0-beta.40",
-    "@babel/preset-stage-3": "^7.0.0-beta.40",
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "@babel/preset-react": "^7.0.0-beta.46",
+    "@babel/preset-stage-3": "^7.0.0-beta.46",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.1",
     "ejs": "^2.5.7",
     "eslint": "^4.5.0",
+    "eslint-config-prettier-standard": "^1.0.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -68,6 +69,6 @@
     "pug": "^2.0.0-rc.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "styled-components": "^2.4.0"
+    "styled-components": "^3.2.6"
   }
 }

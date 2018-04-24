@@ -23,7 +23,7 @@ describe('lib/renderSwitch', () => {
 
   it('returns rendered html if block is a React component', async () => {
     const title = 'hey'
-    const Title = (props) => <div>{props.title}</div>
+    const Title = props => <div>{props.title}</div>
 
     const { html } = await renderSwitch(Title, {
       basePath: path.join(__dirname, 'fixtures'),
@@ -41,12 +41,12 @@ describe('lib/renderSwitch', () => {
 
   it('accepts a custom component render function', async () => {
     const title = 'hey'
-    const Title = (props) => `<div>${props.title}</div>`
+    const Title = props => `<div>${props.title}</div>`
 
     const { html } = await renderSwitch(Title, {
       basePath: path.join(__dirname, 'fixtures'),
       config: {
-        componentRenderer: (x) => x
+        componentRenderer: x => x
       },
       data: {
         title
