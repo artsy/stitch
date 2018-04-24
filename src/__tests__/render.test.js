@@ -28,7 +28,7 @@ describe('lib/render', () => {
     const [displayObj] = await render(
       {
         name: 'templates/name.jade',
-        age: (props) => <div>{props.age}</div>
+        age: props => <div>{props.age}</div>
       },
       {
         basePath: path.join(__dirname, 'fixtures'),
