@@ -1,5 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {
+  __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS
+} from 'styled-components'
 import { componentRenderer } from '../componentRenderer'
 import { uniq } from 'lodash'
 
@@ -11,6 +13,13 @@ const modules = {
 
 describe('componentRenderer', () => {
   describe('server-side', () => {
+    beforeEach(() => {
+      // For Jest. See: https://github.com/styled-components/styled-components/issues/1692
+      const {
+        StyleSheet
+      } = __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS
+      StyleSheet.reset(true)
+    })
     it('returns mapped components', () => {
       const { components } = componentRenderer({
         mode: 'server',

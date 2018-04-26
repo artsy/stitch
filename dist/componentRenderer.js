@@ -25,9 +25,6 @@ var _lodash = require("lodash");
 
 var _styledComponents = require("styled-components");
 
-// For Jest. See: https://github.com/styled-components/styled-components/issues/1692
-var StyleSheet = _styledComponents.__DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS.StyleSheet;
-StyleSheet.reset(true);
 var modes = {
   CLIENT: 'client',
   SERVER: 'server'
