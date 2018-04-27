@@ -1,12 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { ServerStyleSheet } from 'styled-components'
 import { renderToString } from 'react-dom/server'
 import { uniqueId } from 'lodash'
-
-import {
-  ServerStyleSheet,
-  __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS
-} from 'styled-components'
 
 const modes = {
   CLIENT: 'client',
