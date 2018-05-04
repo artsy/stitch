@@ -19,11 +19,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _styledComponents = require("styled-components");
+
 var _server = require("react-dom/server");
 
 var _lodash = require("lodash");
-
-var _styledComponents = require("styled-components");
 
 var modes = {
   CLIENT: 'client',
@@ -64,8 +64,10 @@ function componentRenderer(config) {
     components: components,
     mountOnClient: function mountOnClient(_ref) {
       var moduleName = _ref.moduleName,
-          props = (0, _objectWithoutProperties2.default)(_ref, ["moduleName"]);
-      components[moduleName](props);
+          component = (0, _objectWithoutProperties2.default)(_ref, ["moduleName"]);
+      components[moduleName]((0, _objectSpread3.default)({
+        mountId: component.mountId
+      }, component.props));
     }
   };
 }
