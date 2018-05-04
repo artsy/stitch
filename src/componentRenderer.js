@@ -55,8 +55,11 @@ export function componentRenderer(config) {
 
   return {
     components,
-    mountOnClient: ({ moduleName, ...props }) => {
-      components[moduleName](props)
+    mountOnClient: ({ moduleName, ...component }) => {
+      components[moduleName]({
+        mountId: component.mountId,
+        ...component.props
+      })
     }
   }
 }
