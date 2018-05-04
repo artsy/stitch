@@ -22,16 +22,16 @@ export function componentRenderer(config) {
     return {
       ...moduleMap,
 
-      [moduleName]: props => {
+      [moduleName]: (props = {}) => {
         if (mode === modes.SERVER) {
-          const mountId = uniqueId('stitch-component-')
+          const mountId = props.mountId || uniqueId('stitch-component-')
           const sheet = new ServerStyleSheet()
           const html = renderToString(
             sheet.collectStyles(<Component {...props} />)
           )
           const css = sheet.getStyleTags()
           const markup = `
-            <div id=${mountId}>
+            <div id="${mountId}">
               ${css}
               ${html}
             </div>

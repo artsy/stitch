@@ -46,7 +46,20 @@ describe('componentRenderer', () => {
         modules
       })
 
-      expect(components.Foo()).toContain('id=stitch-component-')
+      expect(components.Foo()).toContain('id="stitch-component-')
+    })
+
+    it('injects custom DOM id mount points', () => {
+      const { components } = componentRenderer({
+        mode: 'server',
+        modules
+      })
+
+      expect(
+        components.Foo({
+          mountId: 'myCustomMountId'
+        })
+      ).toContain('id="myCustomMountId"')
     })
 
     it('renders component css', () => {

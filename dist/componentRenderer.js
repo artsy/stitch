@@ -40,13 +40,15 @@ function componentRenderer(config) {
   } : _config$serialize;
   var components = (0, _keys.default)(modules).reduce(function (moduleMap, moduleName) {
     var Component = modules[moduleName];
-    return (0, _objectSpread3.default)({}, moduleMap, (0, _defineProperty2.default)({}, moduleName, function (props) {
+    return (0, _objectSpread3.default)({}, moduleMap, (0, _defineProperty2.default)({}, moduleName, function () {
+      var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
       if (mode === modes.SERVER) {
-        var mountId = (0, _lodash.uniqueId)('stitch-component-');
+        var mountId = props.mountId || (0, _lodash.uniqueId)('stitch-component-');
         var sheet = new _styledComponents.ServerStyleSheet();
         var html = (0, _server.renderToString)(sheet.collectStyles(_react.default.createElement(Component, props)));
         var css = sheet.getStyleTags();
-        var markup = "\n            <div id=".concat(mountId, ">\n              ").concat(css, "\n              ").concat(html, "\n            </div>\n          ").trim();
+        var markup = "\n            <div id=\"".concat(mountId, "\">\n              ").concat(css, "\n              ").concat(html, "\n            </div>\n          ").trim();
         serialize({
           mountId: mountId,
           moduleName: moduleName,
