@@ -17,8 +17,6 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
-    "docs:build": "docz build",
-    "docs": "docz dev",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn compile && yarn type-declarations",
@@ -37,10 +35,13 @@
     "url": "https://github.com/artsy/stitch/issues"
   },
   "homepage": "https://github.com/artsy/stitch#readme",
+  "dependencies": {
+    "consolidate": "^0.14.5",
+    "lodash": "^4.17.4"
+  },
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-native": "^0.55.4",
+    "react": "^16",
+    "react-dom": "^16",
     "styled-components": "^3"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
+    "@types/express": "^4.16.0",
     "@types/jest": "^23.2.0",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.3.0",
@@ -62,9 +64,9 @@
     "@types/styled-components": "^3.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "babel-polyfill": "^6.26.0",
     "concurrently": "^3.5.1",
     "conventional-changelog-ember": "^2.0.0",
-    "docz": "^0.11.1",
     "docz-theme-default": "^0.11.1",
     "ejs": "^2.5.7",
     "enzyme": "^3.6.0",
@@ -84,10 +86,6 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3",
     "typescript-styled-plugin": "^0.10.0"
-  },
-  "dependencies": {
-    "consolidate": "^0.14.5",
-    "lodash": "^4.17.4"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [

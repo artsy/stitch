@@ -1,11 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/server'
-import renderTemplate from './renderTemplate'
-import { isComponent, isTemplate } from './utils'
+import React, { ComponentClass } from "react"
+import ReactDOM from "react-dom/server"
+import { Block } from "./render"
+import { RenderLayoutOptions } from "./renderLayout"
+import { StitchConfig } from "./renderLayout"
+import { renderTemplate } from "./renderTemplate"
+import { isComponent, isTemplate } from "./utils"
 
-export default async function renderSwitch(block, options) {
-  let html = ''
-  let css = ''
+type RenderSwitchOptions = Pick<
+  RenderLayoutOptions,
+  "basePath" | "config" | "data" | "locals" | "templates"
+>
+
+export async function renderSwitch(
+  block: Block,
+  options: RenderSwitchOptions
+): Promise<{ html: string; css: string }> {
+  let html = ""
+  let css = ""
 
   if (!block) {
     return { html, css }
@@ -15,13 +26,13 @@ export default async function renderSwitch(block, options) {
     basePath = process.cwd(),
     data = {},
     locals = {},
-    templates = {}
+    templates = {},
   } = options
 
-  const config = {
+  const config: StitchConfig = {
     componentRenderer: ReactDOM.renderToString,
     styledComponents: false,
-    ...options.config
+    ...options.config,
   }
 
   if (isTemplate(block)) {
@@ -30,18 +41,18 @@ export default async function renderSwitch(block, options) {
       locals: {
         ...locals,
         ...data,
-        ...templates
-      }
+        ...templates,
+      },
     })
   } else if (isComponent(block)) {
     const props = { ...data, locals, templates }
     const isReact = config.componentRenderer === ReactDOM.renderToString
 
     if (isReact) {
-      const Component = block
+      const Component = block as ComponentClass<any>
 
       if (config.styledComponents) {
-        const { ServerStyleSheet } = require('styled-components')
+        const { ServerStyleSheet } = require("styled-components")
         const sheet = new ServerStyleSheet()
 
         html = config.componentRenderer(
@@ -53,14 +64,14 @@ export default async function renderSwitch(block, options) {
         html = config.componentRenderer(<Component {...props} />)
       }
     } else {
-      html = config.componentRenderer(block(props))
+      html = config.componentRenderer((block as any)(props))
     }
   } else {
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
       throw new Error(
-        '@artsy/stitch: (lib/index) ' +
-          'Error rendering layout: `block` must be a template, React ' +
-          'component or string'
+        "@artsy/stitch: (lib/index) " +
+          "Error rendering layout: `block` must be a template, React " +
+          "component or string"
       )
     }
   }

@@ -1,52 +1,57 @@
-import renderSwitch from './renderSwitch'
-import { isEmpty, isString, isObject } from 'lodash'
+import { isEmpty, isObject, isString } from "lodash"
+import { ComponentClass } from "react"
+import { RenderLayoutOptions } from "./renderLayout"
+import { renderSwitch } from "./renderSwitch"
 
-export default async function render(asset, options) {
-  const isValid = isString(asset) || isObject(asset)
+/** A Block represents a renderable asset type */
+export type Block = ComponentClass<any> | string[] | string | object
+
+export async function render(
+  block: Block,
+  options: RenderLayoutOptions
+): Promise<string | any[]> {
+  const isValid = isString(block) || isObject(block)
 
   if (!isValid) {
     throw new Error(
-      '(@artsy/stitch: lib/render) ' +
-        'Error rendering template: attempting to render something other than a ' +
-        'string or an object.'
+      "(@artsy/stitch: lib/render) " +
+        "Error rendering template: attempting to render something other than a " +
+        "string or an object."
     )
   }
 
-  if (isString(asset)) {
+  if (isString(block)) {
     try {
-      const { html } = await renderSwitch(asset, options)
+      const { html } = await renderSwitch(block, options)
       return html
     } catch (error) {
       throwError(error)
     }
   } else {
-    const keys = Object.keys(asset)
+    const keys = Object.keys(block)
 
     try {
       const renderedBlocks = await Promise.all(
         keys.map(async key => {
-          const { html, css } = await renderSwitch(asset[key], options)
+          const { html, css } = await renderSwitch(block[key], options)
 
           return {
-            key,
+            css,
             html,
-            css
+            key,
           }
         })
       )
 
       const blockMap = renderedBlocks.reduce(
-        (blockMap, { key, html }) => ({
-          ...blockMap,
-          [key]: html
-        }),
+        (blockMap, { key, html }) => ({ ...blockMap, [key]: html }),
         {}
       )
 
       const css = renderedBlocks
         .filter(({ css }) => !isEmpty(css))
         .map(({ css }) => css)
-        .join('')
+        .join("")
 
       return [blockMap, css]
     } catch (error) {
@@ -56,6 +61,5 @@ export default async function render(asset, options) {
 }
 
 const throwError = error => {
-  console.error(error)
   throw new Error(error)
 }

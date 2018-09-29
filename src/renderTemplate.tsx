@@ -1,20 +1,31 @@
-import cons from 'consolidate'
-import path from 'path'
-import { isArray, isFunction } from 'lodash'
+import cons from "consolidate"
+import { isArray, isFunction } from "lodash"
+import path from "path"
+import { ComponentClass } from "react"
+import { Block } from "./render"
+import { RenderLayoutOptions } from "./renderLayout"
 
-export default async function renderTemplate(template, options = {}) {
+type RenderTemplateOptions = Pick<
+  RenderLayoutOptions,
+  "basePath" | "locals" | "config"
+>
+
+export async function renderTemplate(
+  block: Block,
+  options: RenderTemplateOptions = {}
+): Promise<string> {
   const {
     basePath = process.cwd(),
     locals = {},
     config = {
-      engines: {}
-    }
+      engines: {},
+    },
   } = options
 
   try {
-    const rendered = isArray(template)
-      ? await Promise.all(template.map(compile))
-      : await compile(template)
+    const rendered = isArray(block)
+      ? await Promise.all(block.map(compile))
+      : await compile(block)
 
     return rendered
   } catch (error) {
@@ -22,15 +33,15 @@ export default async function renderTemplate(template, options = {}) {
   }
 
   async function compile(file) {
-    const ext = path.extname(file).replace('.', '')
+    const ext = path.extname(file).replace(".", "")
 
     const compileFn = config.engines[ext] || cons[ext]
 
     if (!isFunction(compileFn)) {
       throw new Error(
-        '(@artsy/stitch: lib/renderTemplate) ' +
-          `Error rendering template with extension ${ext}: Can only render ` +
-          'templates supported by https://www.npmjs.com/package/consolidate.'
+        "(@artsy/stitch: lib/renderTemplate) " +
+          `Error rendering block with extension ${ext}: Can only render ` +
+          "templates supported by https://www.npmjs.com/package/consolidate."
       )
     }
 
@@ -40,7 +51,7 @@ export default async function renderTemplate(template, options = {}) {
       const html = await compileFn(filePath, locals)
 
       // FIXME: Why does consolidate mutate locals?
-      delete locals.filename
+      delete (locals as any).filename
 
       return html
     } catch (error) {

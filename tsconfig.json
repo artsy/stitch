@@ -7,17 +7,12 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es2015",
-    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "outDir": "dist",
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      }
-    ],
     "rootDir": "src",
-    "declaration": true,
-    "noImplicitAny": false
+    "declaration": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules/*", "dist/*"]

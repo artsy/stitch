@@ -1,20 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ServerStyleSheet } from 'styled-components'
-import { renderToString } from 'react-dom/server'
-import { uniqueId } from 'lodash'
+import { uniqueId } from "lodash"
+import React from "react"
+import ReactDOM from "react-dom"
+import { renderToString } from "react-dom/server"
+import { ServerStyleSheet } from "styled-components"
+import { Modules } from "./middleware"
 
-const modes = {
-  CLIENT: 'client',
-  SERVER: 'server'
+/**
+ * TODO: Document new Stitch functionality
+ */
+
+export enum RenderMode {
+  CLIENT = "client",
+  SERVER = "server",
 }
 
-export function componentRenderer(config) {
-  const {
-    modules,
-    mode = modes.SERVER,
-    serialize = component => component
-  } = config
+export interface SerializableComponent {
+  /** If rendering on the client a dom ID to attach the module to */
+  mountId: string
+
+  /** Name of the module */
+  moduleName: string
+
+  /** Props to pass to the module */
+  props: object
+}
+
+interface ComponentRendererConfig {
+  modules: Modules
+  mode: RenderMode
+  serialize: (component: SerializableComponent) => void
+}
+
+export function componentRenderer(config: ComponentRendererConfig) {
+  const { modules, mode = RenderMode.SERVER, serialize } = config
 
   const components = Object.keys(modules).reduce((moduleMap, moduleName) => {
     const Component = modules[moduleName]
@@ -22,9 +40,9 @@ export function componentRenderer(config) {
     return {
       ...moduleMap,
 
-      [moduleName]: (props = {}) => {
-        if (mode === modes.SERVER) {
-          const mountId = props.mountId || uniqueId('stitch-component-')
+      [moduleName]: (props: { mountId?: string } = {}) => {
+        if (mode === RenderMode.SERVER) {
+          const mountId = props.mountId || uniqueId("stitch-component-")
           const sheet = new ServerStyleSheet()
           const html = renderToString(
             sheet.collectStyles(<Component {...props} />)
@@ -37,11 +55,14 @@ export function componentRenderer(config) {
             </div>
           `.trim()
 
-          serialize({ mountId, moduleName, props })
+          if (serialize) {
+            serialize({ mountId, moduleName, props })
+          }
+
           return markup
 
           // Client
-        } else if (mode === modes.CLIENT) {
+        } else if (mode === RenderMode.CLIENT) {
           setTimeout(() => {
             ReactDOM.hydrate(
               <Component {...props} />,
@@ -49,17 +70,17 @@ export function componentRenderer(config) {
             )
           }, 0)
         }
-      }
+      },
     }
   }, {})
 
   return {
     components,
-    mountOnClient: ({ moduleName, ...component }) => {
+    mountOnClient: ({ moduleName, ...component }: SerializableComponent) => {
       components[moduleName]({
         mountId: component.mountId,
-        ...component.props
+        ...component.props,
       })
-    }
+    },
   }
 }
