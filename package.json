@@ -5,70 +5,153 @@
   "main": "./dist/index.js",
   "repository": "git@github.com:artsy/stitch.git",
   "license": "MIT",
-  "scripts": {
-    "build": "yarn clean:build && babel src --ignore src/__tests__ --out-dir dist",
-    "clean:build": "rm -rf dist",
-    "coverage": "jest --coverage",
-    "prepublishOnly": "yarn build",
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "prettier": {
-    "bracketSpacing": true,
-    "semi": false,
-    "singleQuote": true
-  },
-  "jest": {
-    "setupFiles": [
-      "./.test-setup"
-    ],
-    "transform": {
-      ".(js|jsx)": "babel-jest"
-    }
-  },
   "authors": [
     "Christopher Pappas <christopher@artsymail.com>",
     "Alan Johnson <alan@artsymail.com>",
     "Artsy <https://artsy.net>"
   ],
-  "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.46",
-    "consolidate": "^0.14.5",
-    "lodash": "^4.17.4"
+  "files": [
+    "dist"
+  ],
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "compile": "babel src --out-dir dist -s --source-map --extensions '.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
+    "docs:build": "docz build",
+    "docs": "docz dev",
+    "lint": "tslint -c tslint.json --project tsconfig.json",
+    "precommit": "lint-staged",
+    "prepublishOnly": "yarn clean && yarn compile && yarn type-declarations",
+    "prepush": "yarn run type-check",
+    "prettier-project": "yarn prettier-write 'src/**/*.{ts,tsx}'",
+    "prettier-write": "yarn prettier --write",
+    "prettier": "prettier",
+    "semantic-release": "semantic-release",
+    "test": "yarn type-check && yarn jest",
+    "type-check": "tsc --emitDeclarationOnly --pretty",
+    "type-declarations": "tsc --emitDeclarationOnly",
+    "watch": "concurrently --raw --kill-others 'yarn compile -w' 'tsc --emitDeclarationOnly -w'"
   },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/artsy/stitch/issues"
+  },
+  "homepage": "https://github.com/artsy/stitch#readme",
   "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-native": "^0.55.4",
     "styled-components": "^3"
   },
   "devDependencies": {
     "@artsy/express-reloadable": "^1.0.6",
-    "@babel/cli": "^7.0.0-beta.46",
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.46",
-    "@babel/preset-env": "^7.0.0-beta.46",
-    "@babel/preset-react": "^7.0.0-beta.46",
-    "@babel/preset-stage-3": "^7.0.0-beta.46",
-    "babel-core": "^7.0.0-0",
-    "babel-eslint": "^8.2.2",
-    "babel-jest": "^22.4.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@types/jest": "^23.2.0",
+    "@types/lodash": "^4.14.116",
+    "@types/node": "^10.3.0",
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.8",
+    "@types/styled-components": "^3.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "concurrently": "^3.5.1",
+    "conventional-changelog-ember": "^2.0.0",
+    "docz": "^0.11.1",
+    "docz-theme-default": "^0.11.1",
     "ejs": "^2.5.7",
-    "eslint": "^4.5.0",
-    "eslint-config-prettier-standard": "^1.0.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-react": "^5.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.3.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "handlebars": "^4.0.10",
+    "husky": "^0.14.3",
     "jade": "^1.11.0",
-    "jest": "^22.4.2",
-    "prettier": "^1.10.2",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.12.1",
     "pug": "^2.0.0-rc.3",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "styled-components": "^3.2.6"
+    "react-dom": "^16.5.0",
+    "semantic-release": "^15.5.0",
+    "styled-components": "^3.4.5",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.3",
+    "typescript-styled-plugin": "^0.10.0"
+  },
+  "dependencies": {
+    "consolidate": "^0.14.5",
+    "lodash": "^4.17.4"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint --fix",
+      "yarn prettier-write --",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true
+  },
+  "release": {
+    "analyzeCommits": {
+      "preset": "ember",
+      "releaseRules": [
+        {
+          "tag": "DOC",
+          "release": "patch"
+        },
+        {
+          "tag": "FIX",
+          "release": "patch"
+        },
+        {
+          "tag": "PATCH",
+          "release": "patch"
+        },
+        {
+          "tag": "FEATURE",
+          "release": "minor"
+        },
+        {
+          "tag": "BREAKING",
+          "release": "major"
+        }
+      ]
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/*"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/src"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest.config.ts"
+    ],
+    "transform": {
+      ".(ts|tsx)": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   }
 }

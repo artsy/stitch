@@ -1,5 +1,9 @@
 .DS_Store
-coverage
-yarn-error.log
-npm-debug.log
+.awcache
+.env
+.vscode/cSpell.json
 node_modules
+npm-debug.log
+package-lock.json
+yarn-error.log
+.docz
