@@ -1,12 +1,11 @@
 import cons from "consolidate"
 import { isArray, isFunction } from "lodash"
 import path from "path"
-import { ComponentClass } from "react"
+import { StitchOptions } from "./index"
 import { Block } from "./render"
-import { RenderLayoutOptions } from "./renderLayout"
 
 type RenderTemplateOptions = Pick<
-  RenderLayoutOptions,
+  StitchOptions,
   "basePath" | "locals" | "config"
 >
 
