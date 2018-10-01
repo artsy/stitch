@@ -20,12 +20,12 @@ yarn install @artsy/stitch
 
 ### Example Scenarios / Who This Library is Aimed At
 
-* Your UI is built in Jade/Pug or other layout based-engines, and you use "block" functionality. How to inject React components into each while maintaining backwards compatibility?
-* Alternatively, you use a templating library that relies on server-side includes. How to do the same?
-* The bulk of your app is built in Backbone, with each view backed by a Handlebars template. You'd still like to use your existing views / UI while incrementally migrating sections towards React. How to "render" each Backbone view inside of your React components -- or vice versa?
-* You've got a server-side-rendered, EJS-based app and you'd like to start taking advantage of React's isomorphic "universal" rendering. How to go about rendering React components on the server and then rehydrating them on the client?
-* You've got a new app built entirely in React but for one reason or another need to keep portions of the layout isolated from one another.
-* ...
+- Your UI is built in Jade/Pug or other layout based-engines, and you use "block" functionality. How to inject React components into each while maintaining backwards compatibility?
+- Alternatively, you use a templating library that relies on server-side includes. How to do the same?
+- The bulk of your app is built in Backbone, with each view backed by a Handlebars template. You'd still like to use your existing views / UI while incrementally migrating sections towards React. How to "render" each Backbone view inside of your React components -- or vice versa?
+- You've got a server-side-rendered, EJS-based app and you'd like to start taking advantage of React's isomorphic "universal" rendering. How to go about rendering React components on the server and then rehydrating them on the client?
+- You've got a new app built entirely in React but for one reason or another need to keep portions of the layout isolated from one another.
+- ...
 
 Out of the box, Stitch aims for flexibility.
 
@@ -33,15 +33,16 @@ Out of the box, Stitch aims for flexibility.
 
 **Table of Contents**
 
-* [Basic Example](#basic)
-* [Express.js](#expressjs-and-pug)
-* [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
-* [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
-* [Precompiling templates](#precompiling-templates)
-* [Preact and other custom renderers](#custom-renderers)
-* [`<StyledComponents />` support](#styled-components-support)
-* [Full API](#full-api)
-* [Troubleshooting](#troubleshooting)
+- [Basic Example](#basic)
+- [Express.js](#expressjs-and-pug)
+- [Layouts and complex UI](#layouts-and-other-complex-ui-configurations)
+- [Isomorphic / "Universal" Rendering](#isomorpic-or-universal-rendering)
+- [Precompiling templates](#precompiling-templates)
+- [Preact and other custom renderers](#custom-renderers)
+- [`<StyledComponents />` support](#styled-components-support)
+- [Full API](#full-api)
+- [Troubleshooting](#troubleshooting)
+- [Development](#development)
 
 (If you want to jump right in, see the [full example project](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack).)
 
@@ -57,10 +58,10 @@ In its most basic form, this library is a single function that accepts a path to
 
 ```js
 const html = await renderLayout({
-  layout: 'templates/layout.handlebars',
+  layout: "templates/layout.handlebars",
   data: {
-    title: 'Hello!'
-  }
+    title: "Hello!",
+  },
 })
 
 console.log(html)
@@ -94,19 +95,15 @@ By adding "blocks" you can begin assembling more complex layouts. Blocks represe
 // index.js
 
 const html = await renderLayout({
-  layout: 'templates/layout.handlebars',
+  layout: "templates/layout.handlebars",
   data: {
-    title: 'Hello World!',
+    title: "Hello World!",
   },
   blocks: {
-    body: (props) => {
-      return (
-        <h1>
-          {props.title}
-        </h1>
-      )
-    }
-  }
+    body: props => {
+      return <h1>{props.title}</h1>
+    },
+  },
 })
 
 console.log(html)
@@ -135,28 +132,28 @@ You can add as many blocks as you need, which are accessible by key. Each block 
 ```js
 // index.js
 
-import express from 'express'
-import { renderLayout } from '@artsy/stitch'
+import express from "express"
+import { renderLayout } from "@artsy/stitch"
 
-import Body from './components/Body'
-import Footer from './components/Footer'
+import Body from "./components/Body"
+import Footer from "./components/Footer"
 
 const app = express()
 
-app.get('/', async (req, res, next) => {
+app.get("/", async (req, res, next) => {
   try {
     const html = await renderLayout({
-      layout: 'templates/mainLayout.pug',
+      layout: "templates/mainLayout.pug",
       data: {
-        title: 'Hello World!',
+        title: "Hello World!",
         description:
-          'An example showing how to take a view structure based in .pug and interpolate with React'
+          "An example showing how to take a view structure based in .pug and interpolate with React",
       },
       blocks: {
-        head: 'templates/head.pug',
+        head: "templates/head.pug",
         body: Body,
-        footer: Footer
-      }
+        footer: Footer,
+      },
     })
 
     res.send(html)
@@ -166,7 +163,7 @@ app.get('/', async (req, res, next) => {
 })
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000.')
+  console.log("Listening on port 3000.")
 })
 ```
 
@@ -289,13 +286,13 @@ html
 
 ```js
 const html = await renderLayout({
-  layout: 'templates/layout.pug',
+  layout: "templates/layout.pug",
   blocks: {
-    app: App
+    app: App,
   },
   data: {
-    name: 'Z'
-  }
+    name: "Z",
+  },
 })
 
 res.send(html)
@@ -347,11 +344,13 @@ const html = await renderLayout({
 ```js
 // components/Body.js
 
-import React from 'react'
-import Login from './Login'
+import React from "react"
+import Login from "./Login"
 
 export default function App(props) {
-  const { templates: { login } } = props
+  const {
+    templates: { login },
+  } = props
 
   return (
     <div>
@@ -428,16 +427,16 @@ The template is precompiled, and the html is available from within your React co
 If you would prefer to use a rendering engine other than React, no problem -- just pass in a custom render function that returns a string:
 
 ```js
-import renderToString from 'preact-render-to-string'
+import renderToString from "preact-render-to-string"
 
 const html = await renderLayout({
-  layout: 'templates/loginLayout.pug',
+  layout: "templates/loginLayout.pug",
   config: {
-    componentRenderer: renderToString
+    componentRenderer: renderToString,
   },
   blocks: {
-    body: App
-  }
+    body: App,
+  },
 })
 ```
 
@@ -445,7 +444,7 @@ Additionally, if you would like to override any default template engines (e.g., 
 
 ```js
 const html = await renderLayout({
-  layout: 'templates/loginLayout.pug',
+  layout: "templates/loginLayout.pug",
   config: {
     engines: {
       handlebars: (filePath, locals) => {
@@ -453,12 +452,12 @@ const html = await renderLayout({
       },
       pug: (filePath, locals) => {
         return customPugRenderer(filePath, locals)
-      }
-    }
+      },
+    },
   },
   blocks: {
-    body: App
-  }
+    body: App,
+  },
 })
 ```
 
@@ -467,15 +466,15 @@ const html = await renderLayout({
 If your React app uses [`styled-components`](https://www.styled-components.com/), ensure you've installed [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components) and enable server-side rendering via config:
 
 ```js
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const html = await renderLayout({
-  layout: 'templates/layout.pug',
+  layout: "templates/layout.pug",
   config: {
-    styledComponents: true
+    styledComponents: true,
   },
   blocks: {
-    body: (props) => {
+    body: props => {
       const Layout = styled.div`
         background: purple;
         border: 1px solid black;
@@ -483,13 +482,9 @@ const html = await renderLayout({
         width: 100%;
       `
 
-      return (
-        <Layout>
-          Hello Styled Components!
-        </Layout>
-      )
-    }
-  }
+      return <Layout>Hello Styled Components!</Layout>
+    },
+  },
 })
 ```
 
@@ -618,11 +613,11 @@ const html = await renderLayout({
 All of the examples assume that you've enabled [async / await](https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016), which comes by default in versions of Node >= `7.6.0`. If you're getting this error, it's likely you're using an older version that doesn't yet support this feature. But no fear - async / await is just a wrapper around Promises:
 
 ```js
-renderLayout({ layout: 'layout.ejs' })
-  .then((html) => {
+renderLayout({ layout: "layout.ejs" })
+  .then(html => {
     res.send(html)
   })
-  .catch((error) => {
+  .catch(error => {
     next(error)
   })
 ```
@@ -630,3 +625,36 @@ renderLayout({ layout: 'layout.ejs' })
 > Async / await is supported in my version of Node, but I'm not seeing anything in the browser and no errors in the console!
 
 Did you remember to use the `await` keyword before `renderLayout`? It's easy to forget :)
+
+## Development
+
+### Commits and Deployments
+
+Circle CI is set up to publish releases to NPM automatically via [semantic-release](https://github.com/semantic-release/semantic-release) following every successful merge to master.
+
+Release versions (major, minor, patch) are triggered [by commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), when they adhere to [Ember conventions](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-ember/README.md):
+
+```
+[TAG context] commit message
+```
+
+[Valid tags](https://github.com/artsy/palette/blob/master/package.json#L10) for release include PATCH, DOC, FIX (patch), FEATURE (minor), and BREAKING (major). A context is also required. Commits that do not adhere to this convention will not trigger an NPM release.
+
+##### Example Patch Release
+
+```
+[FIX typeface] Add missing unit
+[PATCH tooling] Bump version
+```
+
+##### Example Minor (Feature) Release
+
+```
+[FEATURE ios] Add View primitive
+```
+
+##### Example Major (Breaking) Release
+
+```
+[BREAKING refactor] Update API to support new platform
+```
