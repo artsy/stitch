@@ -1,6 +1,3 @@
-### 1.1.0
-- Add support for custom renderers
-- Add support for SSR styled components
+### Master
 
-### 1.0.0
-- Initial release
+- Convert to TypeScript

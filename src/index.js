@@ -1,1 +1,0 @@
-export { renderLayout } from './renderLayout'
