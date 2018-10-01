@@ -1,6 +1,6 @@
 {
   "name": "@artsy/stitch",
-  "version": "1.6.0",
+  "version": "0.0.0-semantic-release",
   "description": "Helps your Component and Template dependencies peacefully coexist",
   "main": "./dist/index.js",
   "repository": "git@github.com:artsy/stitch.git",
@@ -26,11 +26,10 @@
     "prettier": "prettier",
     "semantic-release": "semantic-release",
     "test": "yarn type-check && yarn jest",
-    "type-check": "tsc --emitDeclarationOnly --pretty",
+    "type-check": "tsc --noEmit --pretty",
     "type-declarations": "tsc --emitDeclarationOnly",
     "watch": "concurrently --raw --kill-others 'yarn compile -w' 'tsc --emitDeclarationOnly -w'"
   },
-  "author": "",
   "bugs": {
     "url": "https://github.com/artsy/stitch/issues"
   },
@@ -40,18 +39,15 @@
     "lodash": "^4.17.4"
   },
   "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16",
-    "styled-components": "^3"
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "styled-components": "^3.4.5"
   },
   "devDependencies": {
     "@artsy/express-reloadable": "^1.0.6",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-json-strings": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
@@ -67,7 +63,6 @@
     "babel-polyfill": "^6.26.0",
     "concurrently": "^3.5.1",
     "conventional-changelog-ember": "^2.0.0",
-    "docz-theme-default": "^0.11.1",
     "ejs": "^2.5.7",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
@@ -78,6 +73,7 @@
     "lint-staged": "^7.2.0",
     "prettier": "^1.12.1",
     "pug": "^2.0.0-rc.3",
+    "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "semantic-release": "^15.5.0",
     "styled-components": "^3.4.5",

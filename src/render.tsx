@@ -1,6 +1,6 @@
 import { isEmpty, isObject, isString } from "lodash"
 import { ComponentClass } from "react"
-import { RenderLayoutOptions } from "./renderLayout"
+import { StitchOptions } from "./index"
 import { renderSwitch } from "./renderSwitch"
 
 /** A Block represents a renderable asset type */
@@ -8,7 +8,7 @@ export type Block = ComponentClass<any> | string[] | string | object
 
 export async function render(
   block: Block,
-  options: RenderLayoutOptions
+  options: StitchOptions
 ): Promise<string | any[]> {
   const isValid = isString(block) || isObject(block)
 

@@ -1,13 +1,12 @@
 import React, { ComponentClass } from "react"
 import ReactDOM from "react-dom/server"
+import { StitchConfig, StitchOptions } from "./index"
 import { Block } from "./render"
-import { RenderLayoutOptions } from "./renderLayout"
-import { StitchConfig } from "./renderLayout"
 import { renderTemplate } from "./renderTemplate"
 import { isComponent, isTemplate } from "./utils"
 
 type RenderSwitchOptions = Pick<
-  RenderLayoutOptions,
+  StitchOptions,
   "basePath" | "config" | "data" | "locals" | "templates"
 >
 
