@@ -11,7 +11,7 @@ export interface StitchConfig {
   }
 
   /** Enable styled-components support */
-  styledComponents: false
+  styledComponents: boolean
 }
 
 export interface StitchOptions {
