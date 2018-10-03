@@ -8,16 +8,12 @@
   dependencies:
     chokidar "^1.7.0"
 
-"@artsy/stitch@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@artsy/stitch/-/stitch-1.1.0.tgz#2e61d5957c240896b5d972f5ec512739d66d6d80"
+"@artsy/stitch@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@artsy/stitch/-/stitch-3.0.0.tgz#ed307965d4da4b3cf2bcd6893c212ca33ceb37c2"
   dependencies:
-    babel-runtime "^6.26.0"
     consolidate "^0.14.5"
     lodash "^4.17.4"
-    react "^15.6.1"
-    react-dom "^15.6.1"
-    styled-components "^2.1.2"
 
 abbrev@1:
   version "1.1.0"
@@ -2308,6 +2304,7 @@ jade@^1.11.0:
     jstransformer "0.0.2"
     mkdirp "~0.5.0"
     transformers "2.1.0"
+    uglify-js "^2.4.19"
     void-elements "~2.0.1"
     with "~4.0.0"
 
