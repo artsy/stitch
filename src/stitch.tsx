@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/server"
 import { StitchOptions } from "./index"
 import { render } from "./render"
 
-export async function renderLayout(options: StitchOptions) {
+export async function stitch(options: StitchOptions) {
   const {
     layout,
     blocks = {},
@@ -18,7 +18,7 @@ export async function renderLayout(options: StitchOptions) {
 
   if (!layout) {
     throw new Error(
-      "(@artsy/stitch: lib/renderLayout) " +
+      "(@artsy/stitch: lib/stitch) " +
         "Error rendering layout: A `layout` file is required."
     )
   }

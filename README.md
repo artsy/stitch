@@ -57,7 +57,7 @@ In its most basic form, this library is a single function that accepts a path to
 ```
 
 ```js
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/layout.handlebars",
   data: {
     title: "Hello!",
@@ -94,7 +94,7 @@ By adding "blocks" you can begin assembling more complex layouts. Blocks represe
 ```js
 // index.js
 
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/layout.handlebars",
   data: {
     title: "Hello World!",
@@ -133,7 +133,7 @@ You can add as many blocks as you need, which are accessible by key. Each block 
 // index.js
 
 import express from "express"
-import { renderLayout } from "@artsy/stitch"
+import { stitch } from "@artsy/stitch"
 
 import Body from "./components/Body"
 import Footer from "./components/Footer"
@@ -142,7 +142,7 @@ const app = express()
 
 app.get("/", async (req, res, next) => {
   try {
-    const html = await renderLayout({
+    const html = await stitch({
       layout: "templates/mainLayout.pug",
       data: {
         title: "Hello World!",
@@ -247,7 +247,7 @@ block body
 
 ...
 
-const html = await renderLayout({
+const html = await stitch({
   basePath: __dirname,
   layout: 'templates/homeLayout.pug',
   data: {
@@ -285,7 +285,7 @@ html
 ```
 
 ```js
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/layout.pug",
   blocks: {
     app: App,
@@ -330,7 +330,7 @@ What to do if you have a bunch of old-school Backbone views that you don't want 
 
 ...
 
-const html = await renderLayout({
+const html = await stitch({
   layout: 'templates/loginLayout.pug',
   blocks: {
     app: App
@@ -429,7 +429,7 @@ If you would prefer to use a rendering engine other than React, no problem -- ju
 ```js
 import renderToString from "preact-render-to-string"
 
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/loginLayout.pug",
   config: {
     componentRenderer: renderToString,
@@ -443,7 +443,7 @@ const html = await renderLayout({
 Additionally, if you would like to override any default template engines (e.g., what is returned by `require('handlebars')`) you can do so by updating `config.engines`:
 
 ```js
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/loginLayout.pug",
   config: {
     engines: {
@@ -468,7 +468,7 @@ If your React app uses [`styled-components`](https://www.styled-components.com/)
 ```js
 import styled from "styled-components"
 
-const html = await renderLayout({
+const html = await stitch({
   layout: "templates/layout.pug",
   config: {
     styledComponents: true,
@@ -503,7 +503,7 @@ html
 ## Full API
 
 ```js
-const html = await renderLayout({
+const html = await stitch({
 
   /**
    * Sets a base path from which to fetch templates.
@@ -613,7 +613,7 @@ const html = await renderLayout({
 All of the examples assume that you've enabled [async / await](https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016), which comes by default in versions of Node >= `7.6.0`. If you're getting this error, it's likely you're using an older version that doesn't yet support this feature. But no fear - async / await is just a wrapper around Promises:
 
 ```js
-renderLayout({ layout: "layout.ejs" })
+stitch({ layout: "layout.ejs" })
   .then(html => {
     res.send(html)
   })
@@ -624,7 +624,7 @@ renderLayout({ layout: "layout.ejs" })
 
 > Async / await is supported in my version of Node, but I'm not seeing anything in the browser and no errors in the console!
 
-Did you remember to use the `await` keyword before `renderLayout`? It's easy to forget :)
+Did you remember to use the `await` keyword before `stitch`? It's easy to forget :)
 
 ## Development
 
