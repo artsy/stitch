@@ -8,7 +8,7 @@
     "start": "NODE_ENV=development node index.js"
   },
   "dependencies": {
-    "@artsy/stitch": "^1.1.0",
+    "@artsy/stitch": "^3.0.0",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "preact": "^8.2.4",
