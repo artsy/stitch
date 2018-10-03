@@ -1,6 +1,6 @@
 import express from 'express'
 import renderToString from 'preact-render-to-string'
-import { renderLayout } from '@artsy/stitch'
+import { stitch } from '@artsy/stitch'
 import { h } from 'preact'
 /** @jsx h */
 
@@ -8,7 +8,7 @@ const app = module.exports = express()
 
 app.get('/', async (req, res) => {
   try {
-    const layout = await renderLayout({
+    const layout = await stitch({
       layout: 'templates/layout.ejs',
       config: {
         componentRenderer: renderToString

@@ -1,9 +1,9 @@
 import React from "react"
 import path from "path"
 import { keys, merge, omit } from "lodash"
-import { renderLayout } from "../"
+import { stitch } from "../"
 
-describe("lib/renderLayout", () => {
+describe("src/stitch", () => {
   const config = (options = {}) => {
     return merge(
       {
@@ -22,20 +22,20 @@ describe("lib/renderLayout", () => {
     )
   }
 
-  describe("#renderLayout", () => {
+  describe("#stitch", () => {
     it("throws if no layout file is provided", async () => {
       console.error = jest.fn()
-      await expect(renderLayout(omit(config(), "layout"))).rejects.toBeDefined()
+      await expect(stitch(omit(config(), "layout"))).rejects.toBeDefined()
     })
 
     it("returns rendered html", async () => {
-      const html = await renderLayout(config())
+      const html = await stitch(config())
       expect(typeof html).toEqual("string")
       expect(html).toMatch("Basic Example")
     })
 
     it("accepts a `basePath` for modifying root file locations", async () => {
-      const html = await renderLayout(
+      const html = await stitch(
         config({
           basePath: __dirname,
           layout: "fixtures/templates/layout.ejs",
@@ -51,7 +51,7 @@ describe("lib/renderLayout", () => {
     it("accepts a `locals` object for local express data", async () => {
       const name = "Hello how are you"
 
-      const html = await renderLayout(
+      const html = await stitch(
         config({
           locals: {
             name,
@@ -65,7 +65,7 @@ describe("lib/renderLayout", () => {
     it("accepts a `data` object for component / app data", async () => {
       const name = "Hello how are you"
 
-      const html = await renderLayout(
+      const html = await stitch(
         config({
           data: {
             name,
@@ -87,7 +87,7 @@ describe("lib/renderLayout", () => {
       const jadeProp = "Lets render a .jade template"
 
       it("can be a path to a template", async () => {
-        const html = await renderLayout(
+        const html = await stitch(
           config({
             blocks: {
               body: "templates/body.jade",
@@ -102,7 +102,7 @@ describe("lib/renderLayout", () => {
       })
 
       it("can be a React component", async () => {
-        const html = await renderLayout(
+        const html = await stitch(
           config({
             blocks: {
               body: props => {
@@ -121,7 +121,7 @@ describe("lib/renderLayout", () => {
 
       it("throws if none of the above", async () => {
         await expect(
-          renderLayout(
+          stitch(
             config({
               blocks: {
                 foo: [],
@@ -136,7 +136,7 @@ describe("lib/renderLayout", () => {
 
     describe("accepts a `templates` object", () => {
       it("can be a path to a template", async () => {
-        const html = await renderLayout(
+        const html = await stitch(
           config({
             blocks: {
               body: props => {
@@ -165,7 +165,7 @@ describe("lib/renderLayout", () => {
       })
 
       it("can be a React component", async () => {
-        const html = await renderLayout(
+        const html = await stitch(
           config({
             blocks: {
               body: props => {
@@ -193,7 +193,7 @@ describe("lib/renderLayout", () => {
 
       it("throws if none of the above", async () => {
         await expect(
-          renderLayout(
+          stitch(
             config({
               templates: {
                 foo: [],
@@ -204,7 +204,7 @@ describe("lib/renderLayout", () => {
       })
 
       it("returns a `templates` object containing rendered html by key", async done => {
-        await renderLayout(
+        await stitch(
           config({
             blocks: {
               body: ({ templates }) => {

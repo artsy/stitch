@@ -1,13 +1,13 @@
 import React from 'react'
 import express from 'express'
 import styled from 'styled-components'
-import { renderLayout } from '@artsy/stitch'
+import { stitch } from '@artsy/stitch'
 
 const app = module.exports = express()
 
 app.get('/', async (req, res) => {
   try {
-    const layout = await renderLayout({
+    const layout = await stitch({
       layout: 'templates/layout.ejs',
       config: {
         styledComponents: true

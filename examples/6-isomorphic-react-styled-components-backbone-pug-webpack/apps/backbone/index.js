@@ -1,12 +1,12 @@
 import App from './components/App'
 import express from 'express'
-import { renderLayout } from '@artsy/stitch'
+import { stitch } from '@artsy/stitch'
 
 const app = module.exports = express()
 
 app.get('/backbone', async (req, res, next) => {
   try {
-    const layout = await renderLayout({
+    const layout = await stitch({
       basePath: __dirname,
       layout: 'templates/layout.pug',
       blocks: {

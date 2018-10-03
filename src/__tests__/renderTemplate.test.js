@@ -1,7 +1,7 @@
 import path from "path"
 import { renderTemplate } from "../renderTemplate"
 
-describe("lib/renderTemplate", () => {
+describe("src/renderTemplate", () => {
   it("renders a single template if template is not an array", async () => {
     const title = "hey"
 

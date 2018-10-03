@@ -3,7 +3,7 @@ import path from "path"
 import { render } from "../render"
 import { keys } from "lodash"
 
-describe("lib/render", () => {
+describe("src/render", () => {
   it("throws if `asset` is not a string or an object", async () => {
     console.error = jest.fn()
     await expect(render()).rejects.toBeDefined()

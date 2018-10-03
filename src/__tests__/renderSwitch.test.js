@@ -2,7 +2,7 @@ import React from "react"
 import path from "path"
 import { renderSwitch } from "../renderSwitch"
 
-describe("lib/renderSwitch", () => {
+describe("src/renderSwitch", () => {
   it("returns a blank string if a block is not provided", async () => {
     const { html } = await renderSwitch(undefined)
     expect(html).toEqual("")

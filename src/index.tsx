@@ -1,5 +1,4 @@
 import { Block } from "./render"
-import { renderLayout as _renderLayout } from "./renderLayout"
 
 export interface StitchConfig {
   /** Custom renderToString-like component renderer */
@@ -44,5 +43,4 @@ export interface StitchOptions {
   }
 }
 
-export const renderLayout = _renderLayout
-export const stitch = _renderLayout
+export { stitch } from "./stitch"
