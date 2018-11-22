@@ -22,7 +22,7 @@ describe("middleware", () => {
       },
     }
 
-    const stitchMiddleware = middleware(modules)
+    const stitchMiddleware = middleware({ modules })
     stitchMiddleware(req, res, next)
     const { components } = res.locals.stitch
     expect(Object.keys(components)).toEqual(["Foo", "Bar", "Baz"])
@@ -43,7 +43,7 @@ describe("middleware", () => {
       },
     }
 
-    const stitchMiddleware = middleware(modules)
+    const stitchMiddleware = middleware({ modules })
     stitchMiddleware(req, res, next)
     const { components } = res.locals.stitch
     const { renderQueue } = res.locals.sharify.data.stitch

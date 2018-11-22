@@ -1,86 +1,86 @@
-import React from 'react'
+import React from "react"
 import styled, {
-  __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS
-} from 'styled-components'
-import { componentRenderer } from '../componentRenderer'
-import { uniq } from 'lodash'
+  __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS,
+} from "styled-components"
+import { componentRenderer } from "../componentRenderer"
+import { uniq } from "lodash"
 
 const modules = {
   Foo: () => <div>foo</div>,
   Bar: () => <div>bar</div>,
-  Baz: ({ name }) => <div>{name}</div>
+  Baz: ({ name }) => <div>{name}</div>,
 }
 
-describe('componentRenderer', () => {
-  describe('server-side', () => {
+describe("componentRenderer", () => {
+  describe("server-side", () => {
     beforeEach(() => {
       // For Jest. See: https://github.com/styled-components/styled-components/issues/1692
       const {
-        StyleSheet
+        StyleSheet,
       } = __DO_NOT_USE_OR_YOU_WILL_BE_HAUNTED_BY_SPOOKY_GHOSTS
       StyleSheet.reset(true)
     })
-    it('returns mapped components', () => {
+    it("returns mapped components", () => {
       const { components } = componentRenderer({
-        mode: 'server',
-        modules
+        mode: "server",
+        modules,
       })
 
-      expect(Object.keys(components)).toEqual(['Foo', 'Bar', 'Baz'])
+      expect(Object.keys(components)).toEqual(["Foo", "Bar", "Baz"])
     })
 
-    it('renders component html', () => {
+    it("renders component html", () => {
       const { components } = componentRenderer({
-        mode: 'server',
-        modules
+        mode: "server",
+        modules,
       })
 
-      expect(components.Foo()).toContain('foo')
-      expect(components.Bar()).toContain('bar')
-      expect(components.Baz({ name: 'baz' })).toContain('baz')
+      expect(components.Foo()).toContain("foo")
+      expect(components.Bar()).toContain("bar")
+      expect(components.Baz({ name: "baz" })).toContain("baz")
     })
 
-    it('injects DOM id mount points', () => {
+    it("injects DOM id mount points", () => {
       const { components } = componentRenderer({
-        mode: 'server',
-        modules
+        mode: "server",
+        modules,
       })
 
       expect(components.Foo()).toContain('id="stitch-component-')
     })
 
-    it('injects custom DOM id mount points', () => {
+    it("injects custom DOM id mount points", () => {
       const { components } = componentRenderer({
-        mode: 'server',
-        modules
+        mode: "server",
+        modules,
       })
 
       expect(
         components.Foo({
-          mountId: 'myCustomMountId'
+          mountId: "myCustomMountId",
         })
       ).toContain('id="myCustomMountId"')
     })
 
-    it('renders component css', () => {
+    it("renders component css", () => {
       const Wrapper = styled.div`
         background-color: purple;
       `
 
       const { components } = componentRenderer({
-        mode: 'server',
+        mode: "server",
         modules: {
-          Wrapper
-        }
+          Wrapper,
+        },
       })
 
-      expect(components.Wrapper()).toContain('background-color:purple;')
+      expect(components.Wrapper()).toContain("background-color:purple;")
     })
 
-    it('creates unique id for each render', () => {
+    it("creates unique id for each render", () => {
       const { components } = componentRenderer({
-        mode: 'server',
-        modules
+        mode: "server",
+        modules,
       })
 
       const [foo] = components.Foo().match(/stitch-component-\d/)
@@ -90,20 +90,31 @@ describe('componentRenderer', () => {
       expect(uniq([foo, bar, baz]).length).toEqual(3)
     })
 
-    it('serializes itself to be passed to the client', () => {
+    it("wraps components in a custom wrapper", () => {
+      const { components } = componentRenderer({
+        mode: "server",
+        modules,
+        Wrapper: ({ children }) => (
+          <div id="foundWrappedComponent">{children}</div>
+        ),
+      })
+      expect(components.Foo()).toContain("foundWrappedComponent")
+    })
+
+    it("serializes itself to be passed to the client", () => {
       const renderQueue = []
 
       const { components } = componentRenderer({
-        mode: 'server',
+        mode: "server",
         modules,
         serialize: component => {
           renderQueue.push(component)
-        }
+        },
       })
 
-      components.Foo({ name: 'Foo' })
-      components.Bar({ name: 'Bar' })
-      components.Baz({ name: 'Baz' })
+      components.Foo({ name: "Foo" })
+      components.Bar({ name: "Bar" })
+      components.Baz({ name: "Baz" })
 
       renderQueue.forEach(({ mountId, moduleName, props }) => {
         expect(mountId).toMatch(/stitch-component-\d/)
@@ -112,16 +123,16 @@ describe('componentRenderer', () => {
     })
   })
 
-  describe('client-side', () => {
-    it('returns a mountOnClient function that when called rehydrates client', () => {
+  describe("client-side", () => {
+    it("returns a mountOnClient function that when called rehydrates client", () => {
       const renderQueue = []
 
       const { components: serverSide } = componentRenderer({
-        mode: 'server',
+        mode: "server",
         modules,
         serialize: component => {
           renderQueue.push(component)
-        }
+        },
       })
 
       serverSide.Foo()
@@ -129,8 +140,8 @@ describe('componentRenderer', () => {
       serverSide.Baz()
 
       const { components: clientSide, mountOnClient } = componentRenderer({
-        mode: 'client',
-        modules
+        mode: "client",
+        modules,
       })
 
       clientSide.Foo = jest.fn()
