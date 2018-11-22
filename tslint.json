@@ -3,6 +3,8 @@
   "rules": {
     "interface-name": false,
     "no-shadowed-variable": false,
-    "variable-name": false
+    "variable-name": false,
+    "no-console": [true, "log"],
+    "object-literal-sort-keys": false
   }
 }

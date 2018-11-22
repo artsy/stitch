@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import React from "react"
 import { ComponentClass } from "react"
 import { componentRenderer } from "./componentRenderer"
 import { RenderMode, SerializableComponent } from "./componentRenderer"
@@ -8,11 +9,19 @@ import { RenderMode, SerializableComponent } from "./componentRenderer"
  */
 
 export interface Modules {
-  /** A map of component modules to serialize */
   [name: string]: ComponentClass<any>
 }
 
-export function middleware(modules: Modules) {
+export interface MiddlewareConfig {
+  /** A map of component modules to serialize */
+  modules: Modules
+  /** An optional wrapper component to wrap a rendered component around */
+  Wrapper?: (props: object) => JSX.Element
+}
+
+export function middleware(config: MiddlewareConfig) {
+  const { modules, Wrapper } = config
+
   return (_req: Request, res: Response, next: NextFunction) => {
     const renderQueue: SerializableComponent[] = []
 
@@ -22,6 +31,7 @@ export function middleware(modules: Modules) {
       serialize: (component: SerializableComponent) => {
         renderQueue.push(component)
       },
+      Wrapper,
     })
 
     res.locals.stitch = {
