@@ -40,6 +40,7 @@ Out of the box, Stitch aims for flexibility.
 - [Precompiling templates](#precompiling-templates)
 - [Preact and other custom renderers](#custom-renderers)
 - [`<StyledComponents />` support](#styled-components-support)
+- [SSR Middleware](/src/internal/README.md)
 - [Full API](#full-api)
 - [Troubleshooting](#troubleshooting)
 - [Development](#development)
