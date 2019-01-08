@@ -47,7 +47,7 @@
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
-    "@artsy/express-reloadable": "^1.0.6",
+    "@artsy/express-reloadable": "1.4.0",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -61,7 +61,7 @@
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.8",
     "@types/styled-components": "^3.0.0",
-    "auto-release-cli": "^1.0.0",
+    "auto-release-cli": "1.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
     "babel-polyfill": "^6.26.0",
