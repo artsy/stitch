@@ -44,7 +44,7 @@
   "peerDependencies": {
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "styled-components": "^3.4.5"
+    "styled-components": "4.0.3"
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
@@ -59,9 +59,10 @@
     "@types/jest": "^23.2.0",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.3.0",
-    "@types/react": "^16.4.13",
+    "@types/react": "16.4.13",
     "@types/react-dom": "^16.0.8",
-    "@types/styled-components": "^3.0.0",
+    "@types/styled-components": "4.0.3",
+    "auto-release-cli": "2.3.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
     "babel-polyfill": "^6.26.0",
@@ -76,9 +77,9 @@
     "lint-staged": "^7.2.0",
     "prettier": "^1.12.1",
     "pug": "^2.0.0-rc.3",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
-    "styled-components": "^3.4.5",
+    "react": "^16.4.13",
+    "react-dom": "^16.4.13",
+    "styled-components": "4.0.3",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-react": "^3.6.0",
