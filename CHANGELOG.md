@@ -1,3 +1,40 @@
+# v5.0.0 (Wed Feb 13 2019)
+
+#### 💥  Breaking Change
+
+- Bump to styled-components@4.0.3 [#56](https://github.com/artsy/stitch/pull/56) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Auto was failing because auto-release-cli was installed [#58](https://github.com/artsy/stitch/pull/58) ([@zephraph](https://github.com/zephraph))
+- Add verbose flag to debug deploy [#57](https://github.com/artsy/stitch/pull/57) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.6 [#54](https://github.com/artsy/stitch/pull/54) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v0.1.0 [#53](https://github.com/artsy/stitch/pull/53) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/auto-config to 0.0.8 [#52](https://github.com/artsy/stitch/pull/52) ([@renovate-bot](https://github.com/renovate-bot))
+- Use arsty shared auto config [#51](https://github.com/artsy/stitch/pull/51) ([@zephraph](https://github.com/zephraph))
+- Update yarn orb to v0.1.5 [#50](https://github.com/artsy/stitch/pull/50) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.1.4 [#49](https://github.com/artsy/stitch/pull/49) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.1.1 [#48](https://github.com/artsy/stitch/pull/48) ([@renovate-bot](https://github.com/renovate-bot))
+- Fix CI [#47](https://github.com/artsy/stitch/pull/47) ([@zephraph](https://github.com/zephraph))
+- Don't deploy trivial changes [#46](https://github.com/artsy/stitch/pull/46) ([@zephraph](https://github.com/zephraph))
+- Make trivial considered an internal change [#45](https://github.com/artsy/stitch/pull/45) ([@zephraph](https://github.com/zephraph))
+- Remove auto-release-cli as a dependency [#44](https://github.com/artsy/stitch/pull/44) ([@zephraph](https://github.com/zephraph))
+- Update yarn orb to v0.1.0 [#43](https://github.com/artsy/stitch/pull/43) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency auto-release-cli to v2.4.1 [#42](https://github.com/artsy/stitch/pull/42) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency auto-release-cli to v2.4.0 [#41](https://github.com/artsy/stitch/pull/41) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency auto-release-cli to v2.3.2 [#40](https://github.com/artsy/stitch/pull/40) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency auto-release-cli to v2.3.1 [#39](https://github.com/artsy/stitch/pull/39) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.0.8 [#38](https://github.com/artsy/stitch/pull/38) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### ⚠️  Pushed to master
+
+- v5.0.0  ([@damassi.pappas@gmail.com](https://github.com/damassi.pappas@gmail.com))
+
+---
+
 # 4.0.1 (Sat Jan 12 2019)
 
 #### 🐛  Bug Fix
