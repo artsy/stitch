@@ -19,7 +19,7 @@ describe("src/renderTemplate", () => {
     const title = "hey"
     const jadeProp = "hi jade"
 
-    const templates = await renderTemplate(
+    const html = await renderTemplate(
       ["templates/head.ejs", "templates/body.jade"],
       {
         basePath: path.join(__dirname, "fixtures"),
@@ -30,8 +30,8 @@ describe("src/renderTemplate", () => {
       }
     )
 
-    expect(templates[0]).toMatch(title)
-    expect(templates[1]).toMatch(jadeProp)
+    expect(html).toMatch(title)
+    expect(html).toMatch(jadeProp)
   })
 
   it("throws if template filename is not supported by consolidate", async () => {
