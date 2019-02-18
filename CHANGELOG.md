@@ -1,3 +1,22 @@
+# v6.1.0 (Mon Feb 18 2019)
+
+#### 🚀  Enhancement
+
+- Accept already rendered block content. [#61](https://github.com/artsy/stitch/pull/61) ([@alloy](https://github.com/alloy))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.7 [#62](https://github.com/artsy/stitch/pull/62) ([@renovate-bot](https://github.com/renovate-bot))
+- Remove auto verbose mode [#59](https://github.com/artsy/stitch/pull/59) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v5.0.0 (Wed Feb 13 2019)
 
 #### 💥  Breaking Change
