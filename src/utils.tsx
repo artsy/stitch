@@ -4,17 +4,11 @@ import path from "path"
 import { Engine, StitchConfig } from "./index"
 import { Block } from "./render"
 
-const BLACKLIST = [".js", ".jsx", ".ts", ".tsx"]
-
-// TODO: Could stat the FS to make sure this is truly an existing template.
 export function isTemplate(
   filePath: string,
   engines?: StitchConfig["engines"]
 ): boolean {
-  return (
-    !BLACKLIST.includes(path.extname(filePath)) &&
-    !!getCompileFn(filePath, engines)
-  )
+  return !!getCompileFn(filePath, engines)
 }
 
 export function getCompileFn(
