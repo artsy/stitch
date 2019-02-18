@@ -1,12 +1,17 @@
 import { Block } from "./render"
 
+export type Engine = (
+  filePath: string,
+  locals: { [key: string]: any }
+) => string
+
 export interface StitchConfig {
   /** Custom renderToString-like component renderer */
   componentRenderer?: (props) => string
 
   /** A map of custom render engines */
   engines?: {
-    [name: string]: (filePath, locals) => string
+    [name: string]: Engine
   }
 
   /** Enable styled-components support */

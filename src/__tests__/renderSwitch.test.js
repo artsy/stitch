@@ -8,6 +8,11 @@ describe("src/renderSwitch", () => {
     expect(html).toEqual("")
   })
 
+  it("returns the input if block is a non-template string", async () => {
+    const { html } = await renderSwitch("some-content", {})
+    expect(html).toEqual("some-content")
+  })
+
   it("returns rendered html if block is a template", async () => {
     const title = "hey"
 

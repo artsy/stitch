@@ -1,13 +1,22 @@
-import { isFunction, isString } from "lodash"
+import cons from "consolidate"
+import { isFunction } from "lodash"
+import path from "path"
+import { Engine, StitchConfig } from "./index"
 import { Block } from "./render"
 
-export function isTemplate(block: Block): boolean {
-  if (!isString(block)) {
-    return false
-  }
-  const BLACKLIST = [".js", ".jsx", ".ts", ".tsx"]
-  const found = BLACKLIST.some(extension => block.includes(extension))
-  return !found
+export function isTemplate(
+  filePath: string,
+  engines?: StitchConfig["engines"]
+): boolean {
+  return !!getCompileFn(filePath, engines)
+}
+
+export function getCompileFn(
+  filePath: string,
+  engines?: StitchConfig["engines"]
+): Engine | undefined {
+  const ext = path.extname(filePath).slice(1)
+  return (engines && engines[ext]) || cons[ext]
 }
 
 export function isComponent(block: Block): boolean {

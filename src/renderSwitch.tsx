@@ -1,3 +1,5 @@
+import { isString } from "lodash"
+import path from "path"
 import React, { ComponentClass } from "react"
 import ReactDOM from "react-dom/server"
 import { StitchConfig, StitchOptions } from "./index"
@@ -21,12 +23,7 @@ export async function renderSwitch(
     return { html, css }
   }
 
-  const {
-    basePath = process.cwd(),
-    data = {},
-    locals = {},
-    templates = {},
-  } = options
+  const { basePath, data = {}, locals = {}, templates = {} } = options
 
   const config: StitchConfig = {
     componentRenderer: ReactDOM.renderToString,
@@ -34,15 +31,20 @@ export async function renderSwitch(
     ...options.config,
   }
 
-  if (isTemplate(block)) {
-    html = await renderTemplate(block, {
-      basePath,
-      locals: {
-        ...locals,
-        ...data,
-        ...templates,
-      },
-    })
+  if (isString(block)) {
+    if (isTemplate(block, config.engines)) {
+      html = await renderTemplate(block, {
+        basePath,
+        config,
+        locals: {
+          ...locals,
+          ...data,
+          ...templates,
+        },
+      })
+    } else {
+      html = block
+    }
   } else if (isComponent(block)) {
     const props = { ...data, locals, templates }
     const isReact = config.componentRenderer === ReactDOM.renderToString

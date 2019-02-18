@@ -1,8 +1,7 @@
-import cons from "consolidate"
-import { isArray, isFunction } from "lodash"
+import { isArray } from "lodash"
 import path from "path"
 import { StitchOptions } from "./index"
-import { Block } from "./render"
+import { getCompileFn } from "./utils"
 
 type RenderTemplateOptions = Pick<
   StitchOptions,
@@ -10,51 +9,29 @@ type RenderTemplateOptions = Pick<
 >
 
 export async function renderTemplate(
-  block: Block,
+  filePaths: string | string[],
   options: RenderTemplateOptions = {}
 ): Promise<string> {
-  const {
-    basePath = process.cwd(),
-    locals = {},
-    config = {
-      engines: {},
-    },
-  } = options
+  const { config, basePath = process.cwd() } = options
 
   try {
-    const rendered = isArray(block)
-      ? await Promise.all(block.map(compile))
-      : await compile(block)
+    const rendered = isArray(filePaths)
+      ? await Promise.all(filePaths.map(compile)).then(res => res.join("\n"))
+      : await compile(filePaths)
 
     return rendered
   } catch (error) {
     throw new Error(`(@artsy/stitch: lib/renderTemplate) ${error.message}`)
   }
 
-  async function compile(file) {
-    const ext = path.extname(file).replace(".", "")
+  async function compile(filePath) {
+    const absoluteFilePath = path.resolve(basePath, filePath)
+    const compileFn = getCompileFn(absoluteFilePath, config && config.engines)
 
-    const compileFn = config.engines[ext] || cons[ext]
+    // Consolidate mutates the `locals` input, so provide a copy or otherwise an
+    // empty object if not locals were specified.
+    const html = await compileFn(absoluteFilePath, { ...options.locals })
 
-    if (!isFunction(compileFn)) {
-      throw new Error(
-        "(@artsy/stitch: lib/renderTemplate) " +
-          `Error rendering block with extension ${ext}: Can only render ` +
-          "templates supported by https://www.npmjs.com/package/consolidate."
-      )
-    }
-
-    const filePath = path.join(basePath, file)
-
-    try {
-      const html = await compileFn(filePath, locals)
-
-      // FIXME: Why does consolidate mutate locals?
-      delete (locals as any).filename
-
-      return html
-    } catch (error) {
-      throw new Error(error.message)
-    }
+    return html
   }
 }
