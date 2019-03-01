@@ -1,3 +1,20 @@
+# v6.1.1 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Add babel-plugin-lodash [#64](https://github.com/artsy/stitch/pull/64) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.8 [#63](https://github.com/artsy/stitch/pull/63) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.1.0 (Mon Feb 18 2019)
 
 #### 🚀  Enhancement
