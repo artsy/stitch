@@ -39,7 +39,7 @@
   "homepage": "https://github.com/artsy/stitch#readme",
   "dependencies": {
     "consolidate": "^0.14.5",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -84,7 +84,8 @@
     "tslint-config-prettier": "^1.13.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3",
-    "typescript-styled-plugin": "^0.10.0"
+    "typescript-styled-plugin": "^0.10.0",
+    "uglify-js": "^3.4.9"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
