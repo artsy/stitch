@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.0.tgz#85d39cffd893fb0aa903ff8a17b3cf3baf3d8646"
   integrity sha512-C7Y7H6qgmrBAL0lp/EGxsEBUNDzgxkB2TnQW3lW37Q6YZiIKYpjGmu0aNHa/HEsY0LTRg2LzF25y1FU+3iAKwQ==
 
-"@artsy/express-reloadable@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@artsy/express-reloadable/-/express-reloadable-1.4.2.tgz#0f851941c72b444467d9b02c95233a777aedeb74"
-  integrity sha512-W4enNndrgxEsRMUrbmUuN1lnuN2dN552G1jenRftq7JmItqagEZH5+p9SVGgZ0lkH/Gibuqw8Gj99q5fQiGCIQ==
+"@artsy/express-reloadable@1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@artsy/express-reloadable/-/express-reloadable-1.4.4.tgz#121852e2ac37ff9dc4b86f5c9f5ef6fdae23a3a8"
+  integrity sha512-EPkq+jkg5I5GW7ocs2P/geo+pm5JYttzybzIpPYnuPNgx4sSMzkQo7KWcqv8lTmyoqfc4/7Iz2AwcTYUQeczHA==
   dependencies:
     chalk "^2.3.1"
     chokidar "^3.0.0"
