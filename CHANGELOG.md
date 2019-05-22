@@ -1,3 +1,27 @@
+# v6.1.4 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- Update renovate to have stitch ignore itself [#78](https://github.com/artsy/stitch/pull/78) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update renovate to use the lib workflow [#75](https://github.com/artsy/stitch/pull/75) ([@zephraph](https://github.com/zephraph))
+- Update dependency @artsy/express-reloadable to v1.4.6 [#74](https://github.com/artsy/stitch/pull/74) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/express-reloadable to v1.4.5 [#73](https://github.com/artsy/stitch/pull/73) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/express-reloadable to v1.4.2 [#71](https://github.com/artsy/stitch/pull/71) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v1 [#70](https://github.com/artsy/stitch/pull/70) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v0.1.2 [#69](https://github.com/artsy/stitch/pull/69) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/express-reloadable to v1.4.1 [#68](https://github.com/artsy/stitch/pull/68) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.2.0 [#67](https://github.com/artsy/stitch/pull/67) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.1.3 (Fri Mar 01 2019)
 
 
