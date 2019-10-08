@@ -30,7 +30,10 @@ export async function renderTemplate(
 
     // Consolidate mutates the `locals` input, so provide a copy or otherwise an
     // empty object if not locals were specified.
-    const html = await compileFn(absoluteFilePath, { ...options.locals })
+    const html = await compileFn(absoluteFilePath, {
+      ...options.locals,
+      cache: true,
+    })
 
     return html
   }

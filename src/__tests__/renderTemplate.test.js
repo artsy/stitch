@@ -1,5 +1,6 @@
 import path from "path"
 import { renderTemplate } from "../renderTemplate"
+import consolidate from "consolidate"
 
 describe("src/renderTemplate", () => {
   it("renders a single template if template is not an array", async () => {
@@ -66,5 +67,24 @@ describe("src/renderTemplate", () => {
     })
 
     expect(html).toMatch(output({ name, description }))
+  })
+
+  it("tells the underlying render engine to cache", async () => {
+    const _jade = consolidate.jade
+    consolidate.jade = jest.fn()
+    try {
+      await renderTemplate(["templates/body.jade"], {
+        basePath: path.join(__dirname, "fixtures"),
+        locals: {
+          jadeProp: "Be cached",
+        },
+      })
+      expect(consolidate.jade).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({ cache: true })
+      )
+    } finally {
+      consolidate.jade = _jade
+    }
   })
 })
