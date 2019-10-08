@@ -1,3 +1,24 @@
+# v6.1.5 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Let consolidate cache templates. [#84](https://github.com/artsy/stitch/pull/84) ([@alloy](https://github.com/alloy))
+
+#### 🏠  Internal
+
+- Update yarn orb to v2.1.1 [#83](https://github.com/artsy/stitch/pull/83) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/express-reloadable from 1.4.6 to v1.4.7 [#82](https://github.com/artsy/stitch/pull/82) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/auto-config from 1.0.0 to v1.0.1 [#81](https://github.com/artsy/stitch/pull/81) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v2 [#80](https://github.com/artsy/stitch/pull/80) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependencies [#79](https://github.com/artsy/stitch/pull/79) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.1.4 (Wed May 22 2019)
 
 #### 🐛  Bug Fix
