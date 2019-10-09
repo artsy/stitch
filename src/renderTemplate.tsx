@@ -32,7 +32,11 @@ export async function renderTemplate(
     // empty object if not locals were specified.
     const html = await compileFn(absoluteFilePath, {
       ...options.locals,
+      // Let Jade cache compiled template functions
       cache: true,
+      // Do not include Jade debugging information in production, but also don't
+      // be overly verbose in development.
+      compileDebug: process.env.NODE_ENV === "production" ? false : undefined,
     })
 
     return html
