@@ -1,6 +1,6 @@
 {
   "name": "@artsy/stitch",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "description": "Helps your Component and Template dependencies peacefully coexist",
   "main": "./dist/index.js",
   "repository": "git@github.com:artsy/stitch.git",
