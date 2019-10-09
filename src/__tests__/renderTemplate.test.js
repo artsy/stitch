@@ -69,10 +69,20 @@ describe("src/renderTemplate", () => {
     expect(html).toMatch(output({ name, description }))
   })
 
-  it("tells the underlying render engine to cache", async () => {
+  describe("concerning render engine configuration", () => {
     const _jade = consolidate.jade
-    consolidate.jade = jest.fn()
-    try {
+    const _env = process.env.NODE_ENV
+
+    beforeEach(() => {
+      consolidate.jade = jest.fn()
+    })
+
+    afterEach(() => {
+      consolidate.jade = _jade
+      process.env.NODE_ENV = _env
+    })
+
+    it("tells the underlying render engine to cache", async () => {
       await renderTemplate(["templates/body.jade"], {
         basePath: path.join(__dirname, "fixtures"),
         locals: {
@@ -83,8 +93,20 @@ describe("src/renderTemplate", () => {
         expect.any(String),
         expect.objectContaining({ cache: true })
       )
-    } finally {
-      consolidate.jade = _jade
-    }
+    })
+
+    it("tells the underlying render engine to not output debugging info in production", async () => {
+      process.env.NODE_ENV = "production"
+      await renderTemplate(["templates/body.jade"], {
+        basePath: path.join(__dirname, "fixtures"),
+        locals: {
+          jadeProp: "Be cached",
+        },
+      })
+      expect(consolidate.jade).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({ compileDebug: false })
+      )
+    })
   })
 })
