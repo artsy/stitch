@@ -1,3 +1,15 @@
+# v6.1.6 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Don’t output debugging info in prod when rendering Jade templates. [#85](https://github.com/artsy/stitch/pull/85) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v6.1.5 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
