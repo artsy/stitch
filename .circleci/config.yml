@@ -20,7 +20,7 @@ workflows:
       - yarn/test:
           requires:
             - yarn/workflow-queue
-      - auto/canary:
+      - auto/publish-canary:
           context: npm-deploy
           filters:
             branches:
