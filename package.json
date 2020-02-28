@@ -83,7 +83,7 @@
     "tslint": "5.13.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-react": "3.6.0",
-    "typescript": "3.8.2",
+    "typescript": "3.8.3",
     "typescript-styled-plugin": "0.10.0",
     "uglify-js": "3.4.9"
   },
