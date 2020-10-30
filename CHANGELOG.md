@@ -1,3 +1,47 @@
+# v6.2.0 (Fri Oct 30 2020)
+
+#### 🚀  Enhancement
+
+- fix: setTimeout [#114](https://github.com/artsy/stitch/pull/114) ([@icirellik](https://github.com/icirellik))
+
+#### 🏠  Internal
+
+- Update auto orb to v1.1.0 [#99](https://github.com/artsy/stitch/pull/99) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 4.0.3 to v4.0.5 [#113](https://github.com/artsy/stitch/pull/113) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.9.7 to v4 [#111](https://github.com/artsy/stitch/pull/111) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update yarn orb from 4.0.2 to v5 [#103](https://github.com/artsy/stitch/pull/103) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep typescript from 3.9.6 to v3.9.7 [#109](https://github.com/artsy/stitch/pull/109) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.9.5 to v3.9.6 [#108](https://github.com/artsy/stitch/pull/108) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.9.3 to v3.9.5 [#107](https://github.com/artsy/stitch/pull/107) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.9.2 to v3.9.3 [#106](https://github.com/artsy/stitch/pull/106) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.8.3 to v3.9.2 [#105](https://github.com/artsy/stitch/pull/105) ([@renovate-bot](https://github.com/renovate-bot))
+- Update auto orb from 1.2.1 to v1.3.2 [#104](https://github.com/artsy/stitch/pull/104) ([@renovate-bot](https://github.com/renovate-bot))
+- Update auto orb from 1.2.0 to v1.2.1 [#102](https://github.com/artsy/stitch/pull/102) ([@renovate-bot](https://github.com/renovate-bot))
+- Update auto orb from 1.1.0 to v1.2.0 [#101](https://github.com/artsy/stitch/pull/101) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/express-reloadable from 1.4.7 to v1.4.8 [#100](https://github.com/artsy/stitch/pull/100) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 4.0.2 to v4.0.3 [#112](https://github.com/artsy/stitch/pull/112) ([@renovate-bot](https://github.com/renovate-bot))
+- Update auto orb to v1.0.2 [#98](https://github.com/artsy/stitch/pull/98) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v4.0.2 [#97](https://github.com/artsy/stitch/pull/97) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.8.2 to v3.8.3 [#96](https://github.com/artsy/stitch/pull/96) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v4.0.1 [#95](https://github.com/artsy/stitch/pull/95) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep typescript from 3.7.5 to v3.8.2 [#94](https://github.com/artsy/stitch/pull/94) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v4 [#93](https://github.com/artsy/stitch/pull/93) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dep @artsy/auto-config from ^1.0.2 to 1.0.2 [#92](https://github.com/artsy/stitch/pull/92) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v3 [#91](https://github.com/artsy/stitch/pull/91) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep typescript from 3.7.4 to v3.7.5 [#89](https://github.com/artsy/stitch/pull/89) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep typescript from 3.7.3 to v3.7.4 [#88](https://github.com/artsy/stitch/pull/88) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.7.2 to v3.7.3 [#87](https://github.com/artsy/stitch/pull/87) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.3.3333 to v3.7.2 [#86](https://github.com/artsy/stitch/pull/86) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cameron Rollheiser ([@icirellik](https://github.com/icirellik))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.1.6 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
