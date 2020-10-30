@@ -13,7 +13,7 @@ export function clientRenderer({
   const components = Object.entries(modules).reduce(
     (moduleMap, [moduleName, Module]: any[]) => {
       const Component = (props: Partial<SerializableComponent> = {}) => {
-        setImmediate(() => {
+        setTimeout(() => {
           if (!props.mountId) {
             console.error(
               "[@artsy/stitch] Error mounting clientside component: `mountId` is " +
@@ -37,7 +37,7 @@ export function clientRenderer({
             </Wrapper>,
             mountPoint
           )
-        })
+        }, 0)
       }
 
       return {
