@@ -6004,10 +6004,10 @@ typescript-template-language-service-decorator@^1.7.0:
   resolved "https://registry.yarnpkg.com/typescript-template-language-service-decorator/-/typescript-template-language-service-decorator-1.7.1.tgz#60f825b6b2bab725c9a73eaff65cb598e81a1bc8"
   integrity sha512-Gk0WBNe73T87lpiSj37Xmwzvt5zkKaHT1chY5+v2KP4uhpHktqIcV1hMpxmzAong38EIEhGZWeKtxjxGmTMbqg==
 
-typescript@4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
-  integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
+typescript@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.2.tgz#6369ef22516fe5e10304aae5a5c4862db55380e9"
+  integrity sha512-thGloWsGH3SOxv1SoY7QojKi0tc+8FnOmiarEGMbd/lar7QOEd3hvlx3Fp5y6FlDUGl9L+pd4n2e+oToGMmhRQ==
 
 uglify-js@3.4.9, uglify-js@^3.1.4:
   version "3.4.9"
