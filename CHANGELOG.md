@@ -1,3 +1,30 @@
+# v6.3.0 (Tue Jun 22 2021)
+
+#### 🚀  Enhancement
+
+- It's me again [#126](https://github.com/artsy/stitch/pull/126) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- chore(deps): update dep typescript from 4.2.2 to v4.2.3 [#120](https://github.com/artsy/stitch/pull/120) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.3.3 to v4.3.4 [#125](https://github.com/artsy/stitch/pull/125) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.2.4 to v4.3.2 [#123](https://github.com/artsy/stitch/pull/123) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep @artsy/express-reloadable from 1.0.9 to ^1.4.8 [#122](https://github.com/artsy/stitch/pull/122) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.2.3 to v4.2.4 [#121](https://github.com/artsy/stitch/pull/121) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.3.2 to v4.3.3 [#124](https://github.com/artsy/stitch/pull/124) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.1.5 to v4.2.2 [#119](https://github.com/artsy/stitch/pull/119) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.1.4 to v4.1.5 [#118](https://github.com/artsy/stitch/pull/118) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.1.3 to v4.1.4 [#117](https://github.com/artsy/stitch/pull/117) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.1.2 to v4.1.3 [#116](https://github.com/artsy/stitch/pull/116) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.0.5 to v4.1.2 [#115](https://github.com/artsy/stitch/pull/115) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.2.0 (Fri Oct 30 2020)
 
 #### 🚀  Enhancement
