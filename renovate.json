@@ -5,10 +5,7 @@
   "ignoreDeps": [
     "@artsy/stitch"
   ],
-  "reviewers": [
-    "damassi"
-  ],
   "assignees": [
-    "zephraph"
+    "damassi"
   ]
 }
