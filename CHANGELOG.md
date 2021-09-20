@@ -1,3 +1,25 @@
+# v6.4.0 (Mon Sep 20 2021)
+
+#### 🚀  Enhancement
+
+- chore: Configure Dependabot [#134](https://github.com/artsy/stitch/pull/134) ([@icirellik](https://github.com/icirellik))
+
+#### 🏠  Internal
+
+- chore(deps): update dep typescript from 4.4.2 to v4.4.3 [#133](https://github.com/artsy/stitch/pull/133) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep @artsy/express-reloadable from 1.4.9 to v1.5.0 [#132](https://github.com/artsy/stitch/pull/132) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep @artsy/express-reloadable from 1.4.8 to v1.4.9 [#131](https://github.com/artsy/stitch/pull/131) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.3.5 to v4.4.2 [#130](https://github.com/artsy/stitch/pull/130) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update auto orb from 1.3.2 to v1.4.0 [#128](https://github.com/artsy/stitch/pull/128) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.3.4 to v4.3.5 [#127](https://github.com/artsy/stitch/pull/127) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Cameron Rollheiser ([@icirellik](https://github.com/icirellik))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.3.0 (Tue Jun 22 2021)
 
 #### 🚀  Enhancement
