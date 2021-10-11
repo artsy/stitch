@@ -15,7 +15,7 @@
     "express": "^4.15.4",
     "jade": "^1.11.0",
     "jquery": "^3.5.0",
-    "pug": "^2.0.0-rc.3",
+    "pug": "^3.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "styled-components": "^2.1.2"
