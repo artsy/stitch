@@ -1,4 +1,4 @@
-#### SSR Middleware
+### SSR Middleware
 
 Since it's not always an option to start building pages from scratch, Artsy needed a mechanism for taking existing Jade components and stitching in new React components. Using express-based middleware, we provide Stitch with a map of modules that can be rendered on the server and rehydrated on the client, all from within existing template code.
 
