@@ -1,6 +1,6 @@
 # @artsy/stitch
 
-[![Build Status](https://travis-ci.com/artsy/stitch.svg?token=gy99gfdxXxqG3ydmn6xq&branch=master)](https://travis-ci.com/artsy/stitch)
+[![Build Status](https://travis-ci.com/artsy/stitch.svg?token=gy99gfdxXxqG3ydmn6xq&branch=main)](https://travis-ci.com/artsy/stitch)
 
 Helps your Component and Template dependencies peacefully coexist
 
@@ -45,7 +45,7 @@ Out of the box, Stitch aims for flexibility.
 - [Troubleshooting](#troubleshooting)
 - [Development](#development)
 
-(If you want to jump right in, see the [full example project](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack).)
+(If you want to jump right in, see the [full example project](https://github.com/artsy/stitch/tree/main/examples/6-isomorphic-react-styled-components-backbone-pug-webpack).)
 
 #### Basic Example
 
@@ -272,7 +272,7 @@ res.send(html)
 
 #### Isomorpic (or "Universal") rendering
 
-This is covered in more depth in the [isomorphic-react-pug-webpack example](https://github.com/artsy/stitch/tree/master/examples/6-isomorphic-react-styled-components-backbone-pug-webpack) but in short, since the `data` object is injected into the template before rendering takes place, making it available on the client is as easy as `JSON.stringifying` it:
+This is covered in more depth in the [isomorphic-react-pug-webpack example](https://github.com/artsy/stitch/tree/main/examples/6-isomorphic-react-styled-components-backbone-pug-webpack) but in short, since the `data` object is injected into the template before rendering takes place, making it available on the client is as easy as `JSON.stringifying` it:
 
 ```pug
 // - templates/layout.pug
@@ -392,7 +392,7 @@ export default class Login extends Component {
 ```html
 // templates/login.handlebars
 
-<div id='login'>
+<div id="login">
   <button>
     Login
   </button>

@@ -251,23 +251,19 @@
 
 # v6.1.3 (Fri Mar 01 2019)
 
-
-
 ---
 
 # v6.1.2 (Fri Mar 01 2019)
-
-
 
 ---
 
 # v6.1.1 (Fri Mar 01 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Add babel-plugin-lodash [#64](https://github.com/artsy/stitch/pull/64) ([@damassi](https://github.com/damassi))
 
-#### 🏠  Internal
+#### 🏠 Internal
 
 - Update yarn orb to v0.1.8 [#63](https://github.com/artsy/stitch/pull/63) ([@renovate-bot](https://github.com/renovate-bot))
 
@@ -280,11 +276,11 @@
 
 # v6.1.0 (Mon Feb 18 2019)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - Accept already rendered block content. [#61](https://github.com/artsy/stitch/pull/61) ([@alloy](https://github.com/alloy))
 
-#### 🏠  Internal
+#### 🏠 Internal
 
 - Update yarn orb to v0.1.7 [#62](https://github.com/artsy/stitch/pull/62) ([@renovate-bot](https://github.com/renovate-bot))
 - Remove auto verbose mode [#59](https://github.com/artsy/stitch/pull/59) ([@zephraph](https://github.com/zephraph))
@@ -299,16 +295,16 @@
 
 # v5.0.0 (Wed Feb 13 2019)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - Bump to styled-components@4.0.3 [#56](https://github.com/artsy/stitch/pull/56) ([@damassi](https://github.com/damassi))
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Auto was failing because auto-release-cli was installed [#58](https://github.com/artsy/stitch/pull/58) ([@zephraph](https://github.com/zephraph))
 - Add verbose flag to debug deploy [#57](https://github.com/artsy/stitch/pull/57) ([@zephraph](https://github.com/zephraph))
 
-#### 🏠  Internal
+#### 🏠 Internal
 
 - Update yarn orb to v0.1.6 [#54](https://github.com/artsy/stitch/pull/54) ([@renovate-bot](https://github.com/renovate-bot))
 - Update dependency @artsy/auto-config to v0.1.0 [#53](https://github.com/artsy/stitch/pull/53) ([@renovate-bot](https://github.com/renovate-bot))
@@ -328,15 +324,15 @@
 - Update dependency auto-release-cli to v2.3.1 [#39](https://github.com/artsy/stitch/pull/39) ([@renovate-bot](https://github.com/renovate-bot))
 - Update yarn orb to v0.0.8 [#38](https://github.com/artsy/stitch/pull/38) ([@renovate-bot](https://github.com/renovate-bot))
 
-#### ⚠️  Pushed to master
+#### ⚠️ Pushed to main
 
-- v5.0.0  ([@damassi.pappas@gmail.com](https://github.com/damassi.pappas@gmail.com))
+- v5.0.0 ([@damassi.pappas@gmail.com](https://github.com/damassi.pappas@gmail.com))
 
 ---
 
 # 4.0.1 (Sat Jan 12 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Update dependency auto-release-cli to v2.3.0 [#37](https://github.com/artsy/stitch/pull/37) ([@renovate-bot](https://github.com/renovate-bot))
 
@@ -344,7 +340,7 @@
 
 # 4.0.0 (Wed Jan 09 2019)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - Refactor SSR Middleware + Docs [#25](https://github.com/artsy/stitch/pull/25) ([@damassi](https://github.com/damassi))
 
@@ -356,17 +352,13 @@
 
 # 3.1.2 (Tue Jan 08 2019)
 
-
-
 ---
 
 # 3.1.1 (Sun Jan 06 2019)
 
-
-
 ---
 
-### Master
+### main
 
 - Add auto-release
 - FEATURE: add ability to wrap modules with container component
