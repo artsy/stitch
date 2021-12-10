@@ -1,3 +1,25 @@
+# v6.4.2 (Fri Dec 10 2021)
+
+#### 🐛  Bug Fix
+
+- chore(inclusive-language): master -> main [#222](https://github.com/artsy/stitch/pull/222) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- spec: update spec title to adopt inclusive language [#221](https://github.com/artsy/stitch/pull/221) ([@gkartalis](https://github.com/gkartalis))
+- chore(deps): update dep typescript from 4.5.2 to v4.5.3 [#220](https://github.com/artsy/stitch/pull/220) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.4.4 to v4.5.2 [#218](https://github.com/artsy/stitch/pull/218) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps-dev): bump handlebars from 4.1.0 to 4.7.7 [#211](https://github.com/artsy/stitch/pull/211) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.4.1 (Tue Oct 19 2021)
 
 #### ⚠️ Pushed to `master`
