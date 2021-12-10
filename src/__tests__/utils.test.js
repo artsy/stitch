@@ -3,11 +3,11 @@ import { isTemplate, isComponent } from "../utils"
 
 describe("lib/utils", () => {
   describe("#isTemplate", () => {
-    it("returns true if template extension is not contained in blacklist", () => {
+    it("returns true if template extension is not contained in denylist", () => {
       expect(isTemplate("foo.pug")).toEqual(true)
     })
 
-    it("returns false if template extension is contained in blacklist", () => {
+    it("returns false if template extension is contained in denylist", () => {
       expect(isTemplate("bar.js")).toEqual(false)
       expect(isTemplate("bar.jsx")).toEqual(false)
       expect(isTemplate("bar.ts")).toEqual(false)
