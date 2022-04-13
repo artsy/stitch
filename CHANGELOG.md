@@ -1,3 +1,27 @@
+# v6.5.0 (Wed Apr 13 2022)
+
+#### 🚀  Enhancement
+
+- chore: update dependabot assignee [#232](https://github.com/artsy/stitch/pull/232) ([@ovasdi](https://github.com/ovasdi))
+
+#### 🏠  Internal
+
+- chore(deps): bump minimist from 1.2.5 to 1.2.6 [#233](https://github.com/artsy/stitch/pull/233) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update dep typescript from 4.6.2 to v4.6.3 [#231](https://github.com/artsy/stitch/pull/231) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.5.5 to v4.6.2 [#229](https://github.com/artsy/stitch/pull/229) ([@renovate-bot](https://github.com/renovate-bot))
+- chore: update dependabot reviewers [#228](https://github.com/artsy/stitch/pull/228) ([@ovasdi](https://github.com/ovasdi))
+- chore(deps): update dep typescript from 4.5.4 to v4.5.5 [#225](https://github.com/artsy/stitch/pull/225) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update yarn orb from 6.0.0 to v6.1.0 [#224](https://github.com/artsy/stitch/pull/224) ([@renovate-bot](https://github.com/renovate-bot))
+- chore(deps): update dep typescript from 4.5.3 to v4.5.4 [#223](https://github.com/artsy/stitch/pull/223) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v6.4.2 (Fri Dec 10 2021)
 
 #### 🐛  Bug Fix
