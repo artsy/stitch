@@ -10,7 +10,7 @@
   "dependencies": {
     "@artsy/stitch": "^3.0.0",
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "preact": "^8.2.4",
     "preact-render-to-string": "^3.6.3"
   },
